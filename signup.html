@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Demo Account — Stackly Insurance Services</title>
+  <meta name="description" content="Set up your demonstration insurance account to explore personalized policy schedules, claim tracking, and coverage portfolios.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/Stackly logo.webp">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Page Specific CSS -->
+  <link rel="stylesheet" href="css/signup.css">
+</head>
+<body>
+
+  <!-- Ambient Background Blobs -->
+  <div class="auth-bg-blob blob-1"></div>
+  <div class="auth-bg-blob blob-2"></div>
+
+  <div class="auth-card-wrapper">
+    <!-- Top Return Link -->
+    <div class="auth-nav-top">
+      <a href="index.html" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Back to Home</span>
+      </a>
+      <span style="font-size: 0.8rem; font-weight: 700; color: var(--primary); background: var(--secondary); padding: 6px 14px; border-radius: var(--radius-full); border: 1px solid var(--primary-border);">
+        <i class="fa-solid fa-user-plus text-accent"></i> Demo Enrollment
+      </span>
+    </div>
+
+    <!-- Signup Card -->
+    <div class="auth-card">
+      <div class="auth-header">
+        <a href="index.html" class="brand-badge">
+          <img src="assets/Stackly logo.webp" alt="Stackly Logo" width="44" height="44">
+          <span>Stackly</span>
+        </a>
+        <h1 class="auth-title">Create an Account</h1>
+        <p class="auth-subtitle">Select your account tier and begin exploring policy portfolios.</p>
+      </div>
+
+      <form id="signup-form" novalidate>
+        <!-- Account Type Selection -->
+        <div class="role-selection-group">
+          <label class="role-label">Account Type *</label>
+          <div class="role-pill-container" role="radiogroup" aria-label="Select Account Type">
+            <label class="role-pill active">
+              <input type="radio" name="accountType" id="type-user" value="user" checked>
+              <i class="fa-solid fa-user"></i>
+              <span>Individual User</span>
+            </label>
+            <label class="role-pill">
+              <input type="radio" name="accountType" id="type-client" value="client">
+              <i class="fa-solid fa-briefcase"></i>
+              <span>Business Client</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Full Name -->
+        <div class="form-group">
+          <label for="signup-name" class="form-label">Full Name *</label>
+          <div class="input-with-icon">
+            <i class="fa-regular fa-user field-icon"></i>
+            <input type="text" id="signup-name" class="form-control" placeholder="e.g. Alexander Vance" required>
+          </div>
+        </div>
+
+        <!-- Email & Phone Grid -->
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="signup-email" class="form-label">Email Address *</label>
+            <div class="input-with-icon">
+              <i class="fa-regular fa-envelope field-icon"></i>
+              <input type="email" id="signup-email" class="form-control" placeholder="name@domain.com" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="signup-phone" class="form-label">Phone Number *</label>
+            <div class="input-with-icon">
+              <i class="fa-solid fa-phone field-icon"></i>
+              <input type="tel" id="signup-phone" class="form-control" placeholder="+1 (555) 000-0000" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- Password & Confirm Password Grid -->
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="signup-password" class="form-label">Password * (Min 8 chars)</label>
+            <div class="input-with-icon">
+              <i class="fa-solid fa-lock field-icon"></i>
+              <input type="password" id="signup-password" class="form-control" placeholder="••••••••" required>
+              <button type="button" class="password-toggle-btn" data-target-input="signup-password" aria-label="Show password">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="signup-confirm-password" class="form-label">Confirm Password *</label>
+            <div class="input-with-icon">
+              <i class="fa-solid fa-shield-halved field-icon"></i>
+              <input type="password" id="signup-confirm-password" class="form-control" placeholder="••••••••" required>
+              <button type="button" class="password-toggle-btn" data-target-input="signup-confirm-password" aria-label="Show password">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terms & Conditions Checkbox -->
+        <div class="terms-group">
+          <label class="terms-label">
+            <input type="checkbox" id="signup-terms" required>
+            <span>
+              I agree to the <strong style="color: var(--primary);">Terms of Educational Exploration</strong> and acknowledge that all quotes and policy records are client-side demonstrations.
+            </span>
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit">
+          <span>Create Demo Account</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <!-- Prompt to Login -->
+        <div class="auth-footer-prompt">
+          Already have an account? <a href="login.html">Sign In Here</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Core JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>

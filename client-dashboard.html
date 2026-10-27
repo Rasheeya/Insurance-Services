@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Dashboard — Stackly Commercial Insurance</title>
+  <meta name="description" content="Corporate client insurance dashboard for reviewing portfolio coverage, monitoring commercial claims, downloading reports, and managing multi-tier policies.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/Stackly logo.webp">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+  <!-- Page Specific CSS -->
+  <link rel="stylesheet" href="css/client-dashboard.css">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <!-- Mobile Backdrop -->
+    <div class="sidebar-backdrop"></div>
+
+    <!-- Collapsible Sidebar Navigation -->
+    <aside class="dashboard-sidebar" aria-label="Client Dashboard Sidebar Navigation">
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-brand">
+          <img src="assets/Stackly logo.webp" alt="Stackly Logo" width="40" height="40">
+          <div class="brand-text">
+            <span class="brand-title">Stackly</span>
+          </div>
+        </a>
+        <button type="button" class="sidebar-close-btn" aria-label="Close navigation menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <ul class="sidebar-menu-list">
+        <li class="sidebar-section-header">Client Views</li>
+        <li>
+          <a class="dashboard-nav-item active" data-section="client-overview" role="tab" aria-selected="true">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span class="nav-text">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a class="dashboard-nav-item" data-section="client-coverage" role="tab" aria-selected="false">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span class="nav-text">Coverage Summary</span>
+          </a>
+        </li>
+        <li>
+          <a class="dashboard-nav-item" data-section="client-portfolio" role="tab" aria-selected="false">
+            <i class="fa-solid fa-briefcase"></i>
+            <span class="nav-text">Policy Portfolio</span>
+          </a>
+        </li>
+        <li>
+          <a class="dashboard-nav-item" data-section="client-claims" role="tab" aria-selected="false">
+            <i class="fa-solid fa-file-circle-exclamation"></i>
+            <span class="nav-text">Claims & Requests</span>
+          </a>
+        </li>
+        <li>
+          <a class="dashboard-nav-item" data-section="client-reports" role="tab" aria-selected="false">
+            <i class="fa-solid fa-file-contract"></i>
+            <span class="nav-text">Documents & Reports</span>
+          </a>
+        </li>
+        <li>
+          <a class="dashboard-nav-item" data-section="client-profile" role="tab" aria-selected="false">
+            <i class="fa-solid fa-building-user"></i>
+            <span class="nav-text">Profile & Support</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <button type="button" class="sidebar-logout-btn logout-trigger" title="Logout from session">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <span class="nav-text">Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="dashboard-main">
+      <!-- Header -->
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button type="button" class="sidebar-toggle-btn" aria-label="Toggle navigation drawer">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <h1 class="current-section-title">Overview</h1>
+        </div>
+
+        <!-- Mobile-Only Centered Brand Logo -->
+        <a href="index.html" class="mobile-brand-logo" aria-label="Stackly Home">
+          <img src="assets/Stackly logo.webp" alt="Stackly Logo" width="28" height="28">
+          <span class="mobile-brand-name"><span class="brand-text-main">STACK</span><span class="brand-text-accent">LY</span></span>
+        </a>
+
+        <div class="header-right">
+          <div class="demo-date-badge">
+            <i class="fa-regular fa-calendar"></i>
+            <span>October 23, 2026 (Demo)</span>
+          </div>
+
+          <button type="button" class="header-icon-btn" aria-label="Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notif-badge"></span>
+          </button>
+
+          <div class="header-user-profile" onclick="document.querySelector('[data-section=\'client-profile\']')?.click()" role="button" tabindex="0" title="View Profile & Support">
+            <div class="header-user-info">
+              <div class="header-user-name user-display-name">Sterling Logistics LLC</div>
+              <div class="header-user-role user-display-email" style="font-size: 0.75rem; color: var(--text-muted);">d.sterling@sterling-logistics.test</div>
+            </div>
+            <div class="header-avatar-circle" aria-label="Client Avatar">
+              <span class="avatar-initial">S</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Scrollable Body -->
+      <div class="dashboard-content-body">
+
+        <!-- ==========================================
+             View 1: Overview
+             ========================================== -->
+        <section id="client-overview" class="dashboard-section is-active">
+          <!-- Welcome Section -->
+          <div class="welcome-banner dashboard-card">
+            <div class="welcome-content">
+              <h2 class="welcome-heading">
+                <span class="welcome-lead">Welcome back,</span>
+                <span class="welcome-name user-display-name">Sterling Logistics LLC</span>
+              </h2>
+              <p class="welcome-subtitle">
+                Here is what is happening across your active enterprise policies, commercial coverage, and claim records today.
+              </p>
+            </div>
+            <div class="welcome-badge">
+              <i class="fa-solid fa-briefcase text-accent"></i> Enterprise Account
+            </div>
+          </div>
+
+          <!-- Summary Cards -->
+          <div class="dashboard-metrics-grid">
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Active Coverage</div>
+                <div class="metric-value">$4.08M</div>
+                <div class="metric-subtext">Total Portfolio Aggregate</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-shield-halved"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Total Policies</div>
+                <div class="metric-value">6</div>
+                <div class="metric-subtext">Commercial & Group Tiers</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-briefcase"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Claims in Progress</div>
+                <div class="metric-value">1</div>
+                <div class="metric-subtext">Ref: REQ-2026-884</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Upcoming Renewals</div>
+                <div class="metric-value">2</div>
+                <div class="metric-subtext">Q4 2026 Audit Window</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-calendar-check"></i></div>
+            </div>
+          </div>
+
+          <!-- Charts Row -->
+          <div class="overview-charts-grid">
+            <div class="dashboard-card">
+              <div class="card-header-flex">
+                <h3 class="card-heading"><i class="fa-solid fa-chart-column text-accent"></i> Coverage Limits by Domain ($k)</h3>
+                <span class="status-badge status-active">Client Benchmark</span>
+              </div>
+              <div class="chart-wrapper-box">
+                <canvas id="clientCoverageChart"></canvas>
+              </div>
+            </div>
+
+            <div class="dashboard-card">
+              <div class="card-header-flex">
+                <h3 class="card-heading"><i class="fa-solid fa-tower-broadcast text-accent"></i> Risk Mitigation Score</h3>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">92% Portfolio Health</span>
+              </div>
+              <div class="chart-wrapper-box">
+                <canvas id="clientPortfolioChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Corporate Schedules at a Glance Preview -->
+          <div class="dashboard-card" style="margin-bottom: 24px;">
+            <div class="card-header-flex">
+              <h3 class="card-heading"><i class="fa-solid fa-list-check text-accent"></i> Corporate Policy Schedules at a Glance</h3>
+              <button type="button" class="btn btn-outline btn-sm" onclick="document.querySelector('[data-section=\'client-portfolio\']').click()">
+                View Full Portfolio <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+            <div class="table-responsive-box">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Schedule Reference</th>
+                    <th>Corporate Program</th>
+                    <th>Risk Class</th>
+                    <th>Coverage Cap</th>
+                    <th>Renewal Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>POL-BIZ-8804</strong></td>
+                    <td>Commercial Shield Public Liability & Loss</td>
+                    <td>Commercial Shield</td>
+                    <td>$2,000,000</td>
+                    <td>Dec 15, 2026</td>
+                    <td><span class="status-badge status-active">Active</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm" onclick="document.querySelector('[data-section=\'client-coverage\']').click()">View Details</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>POL-HL-9482</strong></td>
+                    <td>Executive Group Healthcare Floater</td>
+                    <td>Health Insurance</td>
+                    <td>$1,000,000</td>
+                    <td>Nov 12, 2026</td>
+                    <td><span class="status-badge status-active">Active</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-HL-9482">View Details</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>POL-HM-1185</strong></td>
+                    <td>Commercial Facility & Logistics Center</td>
+                    <td>Property Insurance</td>
+                    <td>$550,000</td>
+                    <td>Nov 01, 2026</td>
+                    <td><span class="status-badge status-expiring-soon">Expiring Soon</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-HM-1185">View Details</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Quick Actions & Renewal Alerts -->
+          <div class="dashboard-card">
+            <div class="card-header-flex">
+              <h3 class="card-heading"><i class="fa-solid fa-bolt text-accent"></i> Commercial Quick Actions</h3>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Executive Shortcuts</span>
+            </div>
+            <div class="quick-actions-bar">
+              <button type="button" class="btn btn-primary btn-sm" data-modal-target="new-claim-modal">
+                <i class="fa-solid fa-plus"></i> File Support / Claim Request
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="document.querySelector('[data-section=\'client-coverage\']').click()">
+                <i class="fa-solid fa-eye"></i> Review Coverage Limits
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="document.querySelector('[data-section=\'client-reports\']').click()">
+                <i class="fa-solid fa-file-arrow-down"></i> Export Audit Reports
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="document.querySelector('[data-section=\'client-profile\']').click()">
+                <i class="fa-solid fa-headset"></i> Contact Broker Desk
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             View 2: Coverage Summary
+             ========================================== -->
+        <section id="client-coverage" class="dashboard-section" hidden>
+          <!-- Coverage Summary Metrics Grid -->
+          <div class="dashboard-metrics-grid">
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Total Corporate Coverage</div>
+                <div class="metric-value">$4.08M</div>
+                <div class="metric-subtext">Combined commercial protection</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Commercial Liability Cap</div>
+                <div class="metric-value">$2.00M</div>
+                <div class="metric-subtext">Public & business interruption</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-building-shield"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Fleet Transit Shield</div>
+                <div class="metric-value">$10.04M</div>
+                <div class="metric-subtext">Agreed Value + Third-Party Cap</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-truck"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Aggregate Deductibles</div>
+                <div class="metric-value">$1,250</div>
+                <div class="metric-subtext">Standardized enterprise excess</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-scale-balanced"></i></div>
+            </div>
+          </div>
+
+          <!-- Coverage Visual Row -->
+          <div class="overview-charts-grid" style="margin-bottom: 24px;">
+            <div class="dashboard-card">
+              <div class="card-header-flex">
+                <h3 class="card-heading"><i class="fa-solid fa-chart-pie text-accent"></i> Commercial Risk Allocation ($k)</h3>
+                <span class="status-badge status-active">Active Tiers</span>
+              </div>
+              <div class="chart-wrapper-box">
+                <canvas id="clientCoverageBreakdownChart"></canvas>
+              </div>
+            </div>
+
+            <div class="dashboard-card">
+              <div class="card-header-flex">
+                <h3 class="card-heading"><i class="fa-solid fa-shield-halved text-accent"></i> Corporate Risk Shield Scope</h3>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Underwritten Benefits</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 10px;">
+                <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: var(--bg-page); border-radius: var(--radius-sm);">
+                  <i class="fa-solid fa-gavel text-primary" style="font-size: 1.25rem; margin-top: 2px;"></i>
+                  <div>
+                    <strong style="color: var(--primary); font-size: 0.9rem;">Comprehensive Public Liability Defense</strong>
+                    <p style="margin: 2px 0 0; font-size: 0.8rem; color: var(--text-muted);">$2,000,000 third-party bodily injury & property legal indemnity on corporate premises.</p>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: var(--bg-page); border-radius: var(--radius-sm);">
+                  <i class="fa-solid fa-building-circle-check text-accent" style="font-size: 1.25rem; margin-top: 2px;"></i>
+                  <div>
+                    <strong style="color: var(--primary); font-size: 0.9rem;">12-Month Business Interruption Safeguard</strong>
+                    <p style="margin: 2px 0 0; font-size: 0.8rem; color: var(--text-muted);">Net revenue and employee payroll indemnity coverage in event of physical plant casualty.</p>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: var(--bg-page); border-radius: var(--radius-sm);">
+                  <i class="fa-solid fa-server text-primary" style="font-size: 1.25rem; margin-top: 2px;"></i>
+                  <div>
+                    <strong style="color: var(--primary); font-size: 0.9rem;">Digital Infrastructure & Server Restoration</strong>
+                    <p style="margin: 2px 0 0; font-size: 0.8rem; color: var(--text-muted);">Emergency disaster recovery and electronic transaction ledger reconstitution clause.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-card" style="margin-bottom: 24px;">
+            <div class="card-header-flex" style="margin-bottom: 0; border-bottom: none; padding-bottom: 0;">
+              <div>
+                <h3 class="card-heading"><i class="fa-solid fa-cubes-stacked text-accent"></i> Enterprise Coverage Matrix by Line</h3>
+                <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 4px;">
+                  Comprehensive snapshot of personal, group, and commercial policy limits across all six supported categories.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="coverage-cards-grid">
+            <!-- Health -->
+            <div class="client-cov-card">
+              <div class="cov-card-header">
+                <span class="cov-cat-name"><i class="fa-solid fa-heart-pulse"></i> Health Coverage</span>
+                <span class="status-badge status-active">Active</span>
+              </div>
+              <div class="cov-limit-amount">$1,000,000</div>
+              <div class="cov-limit-label">Aggregate Annual Medical Cap</div>
+              <ul class="cov-details-list">
+                <li><i class="fa-solid fa-check"></i> Group executive outpatient & hospitalization</li>
+                <li><i class="fa-solid fa-check"></i> Cashless tier across 9,400+ hospitals</li>
+                <li><i class="fa-solid fa-check"></i> $500 family member deductible excess</li>
+              </ul>
+              <button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-HL-9482">View Schedule</button>
+            </div>
+
+            <!-- Life -->
+            <div class="client-cov-card">
+              <div class="cov-card-header">
+                <span class="cov-cat-name"><i class="fa-solid fa-umbrella"></i> Life Protection</span>
+                <span class="status-badge status-active">Active</span>
+              </div>
+              <div class="cov-limit-amount">$500,000</div>
+              <div class="cov-limit-label">Keyman Lump-Sum Benefit</div>
+              <ul class="cov-details-list">
+                <li><i class="fa-solid fa-check"></i> 20-Year pure level term protection</li>
+                <li><i class="fa-solid fa-check"></i> 50% accelerated critical advance</li>
+                <li><i class="fa-solid fa-check"></i> Named corporate beneficiary schedule</li>
+              </ul>
+              <button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-LF-3319">View Schedule</button>
+            </div>
+
+            <!-- Motor -->
+            <div class="client-cov-card">
+              <div class="cov-card-header">
+                <span class="cov-cat-name"><i class="fa-solid fa-car"></i> Fleet & Motor</span>
+                <span class="status-badge status-active">Active</span>
+              </div>
+              <div class="cov-limit-amount">$38,500 + $10M</div>
+              <div class="cov-limit-label">Market Value + Third Party</div>
+              <ul class="cov-details-list">
+                <li><i class="fa-solid fa-check"></i> Zero depreciation on replacement parts</li>
+                <li><i class="fa-solid fa-check"></i> Statutory third-party bodily injury cap</li>
+                <li><i class="fa-solid fa-check"></i> Commercial roadside mechanical recovery</li>
+              </ul>
+              <button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-MT-7741">View Schedule</button>
+            </div>
+
+            <!-- Home / Property -->
+            <div class="client-cov-card">
+              <div class="cov-card-header">
+                <span class="cov-cat-name"><i class="fa-solid fa-house-chimney-window"></i> Property & Facility</span>
+                <span class="status-badge status-expiring-soon">Expiring Soon</span>
+              </div>
+              <div class="cov-limit-amount">$550,000</div>
+              <div class="cov-limit-label">Structure ($450k) + Contents ($100k)</div>
+              <ul class="cov-details-list">
+                <li><i class="fa-solid fa-check"></i> Specified peril storm and burst pipe restoration</li>
+                <li><i class="fa-solid fa-check"></i> Emergency make-safe contractor coverage</li>
+                <li><i class="fa-solid fa-check"></i> Renewal due within 9 calendar days</li>
+              </ul>
+              <button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-HM-1185">View Schedule</button>
+            </div>
+
+            <!-- Travel -->
+            <div class="client-cov-card">
+              <div class="cov-card-header">
+                <span class="cov-cat-name"><i class="fa-solid fa-plane-departure"></i> Global Travel</span>
+                <span class="status-badge status-pending-review">Pending Review</span>
+              </div>
+              <div class="cov-limit-amount">$500,000</div>
+              <div class="cov-limit-label">Overseas Inpatient & Evacuation</div>
+              <ul class="cov-details-list">
+                <li><i class="fa-solid fa-check"></i> Emergency worldwide medical airlift</li>
+                <li><i class="fa-solid fa-check"></i> $5,000 flight & hotel cancellation reimbursement</li>
+                <li><i class="fa-solid fa-check"></i> Baggage delay stipend after 12 hours</li>
+              </ul>
+              <button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-TR-5021">View Schedule</button>
+            </div>
+
+            <!-- Business Liability -->
+            <div class="client-cov-card">
+              <div class="cov-card-header">
+                <span class="cov-cat-name"><i class="fa-solid fa-building-shield"></i> Commercial Shield</span>
+                <span class="status-badge status-active">Active</span>
+              </div>
+              <div class="cov-limit-amount">$2,000,000</div>
+              <div class="cov-limit-label">Public Liability & Income Loss</div>
+              <ul class="cov-details-list">
+                <li><i class="fa-solid fa-check"></i> Third-party bodily injury defense on premises</li>
+                <li><i class="fa-solid fa-check"></i> 12 months net profit business interruption</li>
+                <li><i class="fa-solid fa-check"></i> Electronic server and database restore clause</li>
+              </ul>
+              <button type="button" class="btn btn-outline btn-sm" data-plan-id="business-shield">View Schedule</button>
+            </div>
+          </div>
+
+          <!-- Enterprise Coverage Matrix Table -->
+          <div class="dashboard-card" style="margin-top: 24px; margin-bottom: 24px;">
+            <div class="card-header-flex">
+              <h3 class="card-heading"><i class="fa-solid fa-table text-accent"></i> Consolidated Corporate Coverage Schedule</h3>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">6 Active Commercial Lines</span>
+            </div>
+            <div class="table-responsive-box">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Line of Coverage</th>
+                    <th>Underwriting Scope</th>
+                    <th>Aggregate Cap</th>
+                    <th>Deductible Excess</th>
+                    <th>Underwriter Syndicate</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Commercial Shield</strong></td>
+                    <td>Public Liability & Business Interruption</td>
+                    <td>$2,000,000</td>
+                    <td>$500 per claim</td>
+                    <td>Stackly Corporate Underwriting Group</td>
+                    <td><span class="status-badge status-active">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Executive Floater</strong></td>
+                    <td>Group Inpatient & Outpatient Network</td>
+                    <td>$1,000,000</td>
+                    <td>$500 per employee</td>
+                    <td>Metro Health Partners</td>
+                    <td><span class="status-badge status-active">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Corporate Fleet</strong></td>
+                    <td>8 Commercial Transport Sedans & Vans</td>
+                    <td>$38.5k + $10M Third Party</td>
+                    <td>$250 per accident</td>
+                    <td>DriveProtect Commercial</td>
+                    <td><span class="status-badge status-active">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Facility Property</strong></td>
+                    <td>Commercial Logistics Center & Depot</td>
+                    <td>$550,000</td>
+                    <td>$500 per storm/water casualty</td>
+                    <td>Prime Property Alliance</td>
+                    <td><span class="status-badge status-expiring-soon">Expiring Soon</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Keyman Protection</strong></td>
+                    <td>Executive Officer Pure Term Protection</td>
+                    <td>$500,000</td>
+                    <td>N/A (Lump Sum)</td>
+                    <td>FamilySecure Underwriting</td>
+                    <td><span class="status-badge status-active">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Global Delegation</strong></td>
+                    <td>Overseas Medical Concierge & Evacuation</td>
+                    <td>$500,000</td>
+                    <td>$50 emergency excess</td>
+                    <td>Worldwide Travel Guard Syndicate</td>
+                    <td><span class="status-badge status-pending-review">Pending Review</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Bottom Coverage Actions Bar -->
+          <div class="dashboard-card">
+            <div class="card-header-flex">
+              <h3 class="card-heading"><i class="fa-solid fa-bolt text-accent"></i> Coverage Endorsement Actions</h3>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Corporate Endorsement Intake</span>
+            </div>
+            <div class="quick-actions-bar">
+              <button type="button" class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-shield-halved"></i> Request Limit Expansion
+              </button>
+              <button type="button" class="btn btn-outline btn-sm">
+                <i class="fa-solid fa-layer-group"></i> Add Sub-Limit Rider
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" data-download-doc="Corporate_Coverage_Matrix_Master" data-doc-type="Full Coverage Matrix Schedule">
+                <i class="fa-solid fa-file-arrow-down"></i> Download Full Coverage Matrix
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             View 3: Policy Portfolio
+             ========================================== -->
+        <section id="client-portfolio" class="dashboard-section" hidden>
+          <!-- Portfolio Metrics Grid -->
+          <div class="dashboard-metrics-grid">
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Active Schedules</div>
+                <div class="metric-value">6 Contracts</div>
+                <div class="metric-subtext">Commercial & group tiers</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-briefcase"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Annual Premium Outflow</div>
+                <div class="metric-value">$6,960.00</div>
+                <div class="metric-subtext">Consolidated billing schedule</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-credit-card"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Registered Fleet Units</div>
+                <div class="metric-value">8 Vehicles</div>
+                <div class="metric-subtext">Delivery vans & company cars</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-truck"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Audit Compliance</div>
+                <div class="metric-value">100% Passed</div>
+                <div class="metric-subtext">Q4 audit clearance certified</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-circle-check"></i></div>
+            </div>
+          </div>
+
+          <!-- Charts & Checklist Row -->
+          <div class="overview-charts-grid" style="margin-bottom: 24px;">
+            <div class="dashboard-card">
+              <div class="card-header-flex">
+                <h3 class="card-heading"><i class="fa-solid fa-chart-column text-accent"></i> Annual Premium Contribution ($/yr)</h3>
+                <span class="status-badge status-active">Commercial Lines</span>
+              </div>
+              <div class="chart-wrapper-box">
+                <canvas id="clientPortfolioPremiumChart"></canvas>
+              </div>
+            </div>
+
+            <div class="dashboard-card">
+              <div class="card-header-flex">
+                <h3 class="card-heading"><i class="fa-solid fa-clipboard-check text-accent"></i> Corporate Compliance & Risk Audit</h3>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Audit Status</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 10px;">
+                <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: var(--bg-page); border-radius: var(--radius-sm);">
+                  <i class="fa-solid fa-file-circle-check text-primary" style="font-size: 1.25rem; margin-top: 2px;"></i>
+                  <div>
+                    <strong style="color: var(--primary); font-size: 0.9rem;">Quarterly Risk Assessment Completed</strong>
+                    <p style="margin: 2px 0 0; font-size: 0.8rem; color: var(--text-muted);">Underwriter survey validated loss-prevention measures across both commercial depots.</p>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: var(--bg-page); border-radius: var(--radius-sm);">
+                  <i class="fa-solid fa-award text-accent" style="font-size: 1.25rem; margin-top: 2px;"></i>
+                  <div>
+                    <strong style="color: var(--primary); font-size: 0.9rem;">Clean Loss Run Record (3 Years)</strong>
+                    <p style="margin: 2px 0 0; font-size: 0.8rem; color: var(--text-muted);">Low loss-ratio qualifies enterprise for 12% preferred renewal discount rate.</p>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: var(--bg-page); border-radius: var(--radius-sm);">
+                  <i class="fa-solid fa-certificate text-primary" style="font-size: 1.25rem; margin-top: 2px;"></i>
+                  <div>
+                    <strong style="color: var(--primary); font-size: 0.9rem;">Certificate of Insurance (COI) Active</strong>
+                    <p style="margin: 2px 0 0; font-size: 0.8rem; color: var(--text-muted);">Instant verified COI available for municipal contract tenders and trade partners.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filter Toolbar -->
+          <div class="filter-toolbar">
+            <div class="filter-group">
+              <input type="text" id="policy-search" class="filter-input" placeholder="Search commercial portfolio..." aria-label="Search commercial policies">
+              
+              <select id="policy-category-filter" class="filter-select" aria-label="Filter category">
+                <option value="all">All Portfolios</option>
+                <option value="Health Insurance">Health Insurance</option>
+                <option value="Life Insurance">Life Insurance</option>
+                <option value="Motor Insurance">Motor Insurance</option>
+                <option value="Home Insurance">Home Insurance</option>
+                <option value="Travel Insurance">Travel Insurance</option>
+              </select>
+
+              <select id="policy-status-filter" class="filter-select" aria-label="Filter status">
+                <option value="all">All Statuses</option>
+                <option value="Active">Active</option>
+                <option value="Expiring Soon">Expiring Soon</option>
+                <option value="Pending Review">Pending Review</option>
+              </select>
+            </div>
+
+            <div style="font-size: 0.85rem; color: var(--text-muted);">
+              <strong>6</strong> active commercial schedules
+            </div>
+          </div>
+
+          <div class="table-responsive-box">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Schedule ID</th>
+                  <th>Policy Portfolio Name</th>
+                  <th>Category</th>
+                  <th>Coverage Cap</th>
+                  <th>Renewal Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="policy-table-body">
+                <tr class="policy-record-item" data-name="HealthGuard Comprehensive Family Shield" data-number="POL-HL-9482" data-category="Health Insurance" data-status="Active">
+                  <td><strong>POL-HL-9482</strong></td>
+                  <td>HealthGuard Comprehensive Family</td>
+                  <td>Health Insurance</td>
+                  <td>$1,000,000 Aggregate</td>
+                  <td>Nov 12, 2026</td>
+                  <td><span class="status-badge status-active">Active</span></td>
+                  <td>
+                    <button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-HL-9482">View Terms</button>
+                  </td>
+                </tr>
+
+                <tr class="policy-record-item" data-name="FamilySecure 20-Year Term Protection" data-number="POL-LF-3319" data-category="Life Insurance" data-status="Active">
+                  <td><strong>POL-LF-3319</strong></td>
+                  <td>FamilySecure Keyman 20-Year Term</td>
+                  <td>Life Insurance</td>
+                  <td>$500,000 Lump Sum</td>
+                  <td>Mar 01, 2027</td>
+                  <td><span class="status-badge status-active">Active</span></td>
+                  <td>
+                    <button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-LF-3319">View Terms</button>
+                  </td>
+                </tr>
+
+                <tr class="policy-record-item" data-name="DriveProtect Zero-Depreciation Auto" data-number="POL-MT-7741" data-category="Motor Insurance" data-status="Active">
+                  <td><strong>POL-MT-7741</strong></td>
+                  <td>DriveProtect Fleet Auto Comprehensive</td>
+                  <td>Motor Insurance</td>
+                  <td>Agreed Value ($38.5k)</td>
+                  <td>Dec 05, 2026</td>
+                  <td><span class="status-badge status-active">Active</span></td>
+                  <td>
+                    <button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-MT-7741">View Terms</button>
+                  </td>
+                </tr>
+
+                <tr class="policy-record-item" data-name="HomeSafe Structure & Contents Shield" data-number="POL-HM-1185" data-category="Home Insurance" data-status="Expiring Soon">
+                  <td><strong>POL-HM-1185</strong></td>
+                  <td>HomeSafe Commercial Facility Shield</td>
+                  <td>Home Insurance</td>
+                  <td>$450,000 Structure</td>
+                  <td>Nov 01, 2026</td>
+                  <td><span class="status-badge status-expiring-soon">Expiring Soon</span></td>
+                  <td>
+                    <button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-HM-1185">View Terms</button>
+                  </td>
+                </tr>
+
+                <tr class="policy-record-item" data-name="GlobalVoyage Comprehensive Worldwide Travel" data-number="POL-TR-5021" data-category="Travel Insurance" data-status="Pending Review">
+                  <td><strong>POL-TR-5021</strong></td>
+                  <td>GlobalVoyage Corporate Delegation</td>
+                  <td>Travel Insurance</td>
+                  <td>$500,000 Emergency Med</td>
+                  <td>Jan 10, 2027</td>
+                  <td><span class="status-badge status-pending-review">Pending Review</span></td>
+                  <td>
+                    <button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-TR-5021">View Terms</button>
+                  </td>
+                </tr>
+
+                <tr class="policy-record-item" data-name="Commercial Shield Comprehensive Liability" data-number="POL-BIZ-8804" data-category="Commercial Shield" data-status="Active">
+                  <td><strong>POL-BIZ-8804</strong></td>
+                  <td>Commercial Shield Public Liability & Loss</td>
+                  <td>Commercial Shield</td>
+                  <td>$2,000,000 Cap</td>
+                  <td>Dec 15, 2026</td>
+                  <td><span class="status-badge status-active">Active</span></td>
+                  <td>
+                    <button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-BIZ-8804">View Terms</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Bottom Portfolio Actions Bar -->
+          <div class="dashboard-card" style="margin-top: 24px;">
+            <div class="card-header-flex">
+              <h3 class="card-heading"><i class="fa-solid fa-bolt text-accent"></i> Portfolio Management Actions</h3>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Commercial Operations</span>
+            </div>
+            <div class="quick-actions-bar">
+              <button type="button" class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-certificate"></i> Request Instant COI Certificate
+              </button>
+              <button type="button" class="btn btn-outline btn-sm">
+                <i class="fa-solid fa-file-pen"></i> Add Fleet / Site Endorsement
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" data-download-doc="Complete_Corporate_Schedule_Register" data-doc-type="Corporate Portfolio Register">
+                <i class="fa-solid fa-file-arrow-down"></i> Export Schedule Register (TXT)
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             View 4: Claims & Requests
+             ========================================== -->
+        <section id="client-claims" class="dashboard-section" hidden>
+          <!-- Claims Metrics Grid -->
+          <div class="dashboard-metrics-grid">
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Corporate Claims YTD</div>
+                <div class="metric-value">3 Filed</div>
+                <div class="metric-subtext">Health, fleet, and property</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-file-invoice"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Total Indemnity Settled</div>
+                <div class="metric-value">$2,980.00</div>
+                <div class="metric-subtext">Disbursed to client escrow</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-circle-check"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Active Claim Reserve</div>
+                <div class="metric-value">$1,450.00</div>
+                <div class="metric-subtext">Floater claim in adjudication</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Average Resolution Time</div>
+                <div class="metric-value">3.8 Days</div>
+                <div class="metric-subtext">Priority commercial SLA</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-bolt"></i></div>
+            </div>
+          </div>
+
+          <!-- Timeline & Charts Row -->
+          <div class="overview-charts-grid">
+            <div class="dashboard-card">
+              <div class="card-header-flex">
+                <div>
+                  <h3 class="card-heading"><i class="fa-solid fa-timeline text-accent"></i> Active Commercial Claim Audit: #CLM-2026-104</h3>
+                  <span style="font-size: 0.85rem; color: var(--text-muted);">Executive Health Floater • Filed Oct 04, 2026</span>
+                </div>
+                <span class="status-badge status-under-review">Under Review</span>
+              </div>
+
+              <div class="claim-timeline-wrapper">
+                <div class="claim-timeline-step is-complete">
+                  <div class="timeline-step-bubble"><i class="fa-solid fa-check"></i></div>
+                  <div class="timeline-step-title">1. Claim Lodged</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Oct 04, 2026</div>
+                </div>
+
+                <div class="claim-timeline-step is-current">
+                  <div class="timeline-step-bubble"><i class="fa-solid fa-clock"></i></div>
+                  <div class="timeline-step-title">2. Under Review</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Senior Adjuster</div>
+                </div>
+
+                <div class="claim-timeline-step">
+                  <div class="timeline-step-bubble">3</div>
+                  <div class="timeline-step-title">3. Audit Verified</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Pending</div>
+                </div>
+
+                <div class="claim-timeline-step">
+                  <div class="timeline-step-bubble">4</div>
+                  <div class="timeline-step-title">4. Settlement Paid</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Simulated</div>
+                </div>
+              </div>
+
+              <div style="background-color: var(--primary-50); padding: 18px; border-radius: var(--radius-sm); font-size: 0.875rem;">
+                <strong>Executive Notes:</strong> Hospital invoices and diagnostic logs submitted by employee primary care team. Surveyor assessment cleared for demonstration.
+              </div>
+            </div>
+
+            <div class="dashboard-card">
+              <div class="card-header-flex">
+                <h3 class="card-heading"><i class="fa-solid fa-chart-column text-accent"></i> Commercial Settlement History</h3>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">2026 Settled ($)</span>
+              </div>
+              <div class="chart-wrapper-box">
+                <canvas id="clientClaimsTrendChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-card">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-heading"><i class="fa-solid fa-receipt text-accent"></i> Commercial Claims & Requests Register</h3>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Simulated client service tickets and underwriter document checklists</span>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm" data-modal-target="new-claim-modal">
+                <i class="fa-solid fa-plus"></i> New Claim Request
+              </button>
+            </div>
+
+            <div class="table-responsive-box">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Reference</th>
+                    <th>Category</th>
+                    <th>Date Filed</th>
+                    <th>Claimed Amount</th>
+                    <th>Simulated Status</th>
+                    <th>Document Checklist</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>CLM-2026-104</strong></td>
+                    <td>Health Insurance</td>
+                    <td>Oct 04, 2026</td>
+                    <td>$1,450.00</td>
+                    <td><span class="status-badge status-under-review">Under Review</span></td>
+                    <td><i class="fa-solid fa-circle-check text-accent"></i> Invoices & Diagnostic Verified</td>
+                    <td>
+                      <button type="button" class="btn btn-outline btn-sm" data-view-claim="CLM-2026-104">View Audit</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td><strong>CLM-2026-081</strong></td>
+                    <td>Fleet Auto</td>
+                    <td>Feb 12, 2026</td>
+                    <td>$680.00</td>
+                    <td><span class="status-badge status-settled">Settled</span></td>
+                    <td><i class="fa-solid fa-circle-check text-accent"></i> Workshop Estimate Approved</td>
+                    <td>
+                      <button type="button" class="btn btn-outline btn-sm" data-view-claim="CLM-2026-081">View Audit</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td><strong>CLM-2026-059</strong></td>
+                    <td>Commercial Property</td>
+                    <td>Jul 20, 2026</td>
+                    <td>$2,300.00</td>
+                    <td><span class="status-badge status-settled">Settled</span></td>
+                    <td><i class="fa-solid fa-circle-check text-accent"></i> Surveyor Assessment Completed</td>
+                    <td>
+                      <button type="button" class="btn btn-outline btn-sm" data-view-claim="CLM-2026-059">View Audit</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style="background-color: var(--primary-50); padding: 16px; border-radius: var(--radius-sm); margin-top: 20px; font-size: 0.85rem; color: var(--text-muted);">
+              <strong>Disclaimer:</strong> Claims workflows simulate insurer reviews for demonstration purposes. Official approvals require certified underwriter sign-off.
+            </div>
+          </div>
+
+          <!-- Commercial Claims Actions Bar -->
+          <div class="dashboard-card" style="margin-top: 24px;">
+            <div class="card-header-flex">
+              <h3 class="card-heading"><i class="fa-solid fa-headset text-accent"></i> Priority Corporate Claims Desk</h3>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Direct Executive Access</span>
+            </div>
+            <div class="quick-actions-bar">
+              <button type="button" class="btn btn-primary btn-sm" data-modal-target="new-claim-modal">
+                <i class="fa-solid fa-plus-circle"></i> File Commercial Claim
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" data-download-doc="Corporate_Claims_History_Audit_Report" data-doc-type="Corporate Claims Register">
+                <i class="fa-solid fa-file-invoice"></i> Download Claims Register (TXT)
+              </button>
+              <a href="404.html" class="btn btn-outline btn-sm">
+                <i class="fa-solid fa-phone"></i> Dedicated Surveyor Dispatch (1800 789 456)
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             View 5: Documents & Reports
+             ========================================== -->
+        <section id="client-reports" class="dashboard-section" hidden>
+          <!-- Reports Metrics Grid -->
+          <div class="dashboard-metrics-grid">
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Verified Reports</div>
+                <div class="metric-value">6 Files</div>
+                <div class="metric-subtext">Immediate download ready</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-folder-closed"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Underwriting Audits</div>
+                <div class="metric-value">2 Certified</div>
+                <div class="metric-subtext">Risk survey clearance</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-clipboard-check"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Loss Run Register</div>
+                <div class="metric-value">3 Years</div>
+                <div class="metric-subtext">Verified 2023-2026 history</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">COI Certificate</div>
+                <div class="metric-value">Active Ready</div>
+                <div class="metric-subtext">Municipal tender compliant</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-certificate"></i></div>
+            </div>
+          </div>
+
+          <div class="dashboard-card" style="margin-bottom: 24px;">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-heading"><i class="fa-solid fa-file-contract text-accent"></i> Corporate Insurance Reports & Underwriting Schedules</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">
+                  Download verified client-side summaries, coverage comparison reports, and renewal audit sheets.
+                </p>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm" data-download-doc="All_Sterling_Corporate_Reports_Package" data-doc-type="Corporate Archive">
+                <i class="fa-solid fa-file-zipper"></i> Download All Reports (ZIP)
+              </button>
+            </div>
+
+            <div class="documents-grid">
+              <div class="doc-card">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                  <i class="fa-solid fa-file-shield text-accent" style="font-size: 1.75rem;"></i>
+                  <div>
+                    <h4 style="font-size: 1rem; font-weight: 800; color: var(--primary);">Annual Coverage Audit</h4>
+                    <span style="font-size: 0.775rem; color: var(--text-muted);">Generated Oct 2026 • 34 KB</span>
+                  </div>
+                </div>
+                <p style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 16px;">
+                  Consolidated multi-policy limits analysis and underwriter carrier breakdown.
+                </p>
+                <button type="button" class="btn btn-outline btn-sm" data-download-doc="Annual_Coverage_Audit_2026" data-doc-type="Corporate Audit Summary">
+                  <i class="fa-solid fa-download"></i> Download Audit Report
+                </button>
+              </div>
+
+              <div class="doc-card">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                  <i class="fa-solid fa-calendar-days text-primary" style="font-size: 1.75rem;"></i>
+                  <div>
+                    <h4 style="font-size: 1rem; font-weight: 800; color: var(--primary);">Q4 Renewal Checklist</h4>
+                    <span style="font-size: 0.775rem; color: var(--text-muted);">Due Nov 01, 2026 • 26 KB</span>
+                  </div>
+                </div>
+                <p style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 16px;">
+                  Facility property and health floater renewal timeline and terms review.
+                </p>
+                <button type="button" class="btn btn-outline btn-sm" data-download-doc="Q4_Renewal_Checklist_Sterling" data-doc-type="Renewal Checklist">
+                  <i class="fa-solid fa-download"></i> Download Checklist
+                </button>
+              </div>
+
+              <div class="doc-card">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                  <i class="fa-solid fa-file-invoice-dollar text-accent" style="font-size: 1.75rem;"></i>
+                  <div>
+                    <h4 style="font-size: 1rem; font-weight: 800; color: var(--primary);">Liability Comparison</h4>
+                    <span style="font-size: 0.775rem; color: var(--text-muted);">Commercial Evaluation • 29 KB</span>
+                  </div>
+                </div>
+                <p style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 16px;">
+                  Side-by-side comparison of public liability tiers and business interruption.
+                </p>
+                <button type="button" class="btn btn-outline btn-sm" data-download-doc="Commercial_Liability_Comparison_Report" data-doc-type="Coverage Comparison">
+                  <i class="fa-solid fa-download"></i> Download Comparison
+                </button>
+              </div>
+
+              <div class="doc-card">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                  <i class="fa-solid fa-truck-ramp-box text-primary" style="font-size: 1.75rem;"></i>
+                  <div>
+                    <h4 style="font-size: 1rem; font-weight: 800; color: var(--primary);">Fleet Safety Certificate</h4>
+                    <span style="font-size: 0.775rem; color: var(--text-muted);">Issued Dec 2025 • 22 KB</span>
+                  </div>
+                </div>
+                <p style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 16px;">
+                  Annual commercial vehicle mechanical compliance & telemetry inspection audit.
+                </p>
+                <button type="button" class="btn btn-outline btn-sm" data-download-doc="Fleet_Inspection_Certificate_2026" data-doc-type="Fleet Safety Certificate">
+                  <i class="fa-solid fa-download"></i> Download Certificate
+                </button>
+              </div>
+
+              <div class="doc-card">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                  <i class="fa-solid fa-chart-line text-accent" style="font-size: 1.75rem;"></i>
+                  <div>
+                    <h4 style="font-size: 1rem; font-weight: 800; color: var(--primary);">3-Year Loss Run Report</h4>
+                    <span style="font-size: 0.775rem; color: var(--text-muted);">2023 - 2026 Archive • 42 KB</span>
+                  </div>
+                </div>
+                <p style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 16px;">
+                  Certified historical loss run statement used for insurance carrier re-negotiation.
+                </p>
+                <button type="button" class="btn btn-outline btn-sm" data-download-doc="3_Year_Loss_Run_Report_2023_2026" data-doc-type="Verified Loss Run Report">
+                  <i class="fa-solid fa-download"></i> Download Loss Run
+                </button>
+              </div>
+
+              <div class="doc-card">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                  <i class="fa-solid fa-heart-pulse text-primary" style="font-size: 1.75rem;"></i>
+                  <div>
+                    <h4 style="font-size: 1rem; font-weight: 800; color: var(--primary);">Workers Group Health</h4>
+                    <span style="font-size: 0.775rem; color: var(--text-muted);">Active Schedule • 31 KB</span>
+                  </div>
+                </div>
+                <p style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 16px;">
+                  Directory of 9,400+ partner network hospitals with employee cashless access codes.
+                </p>
+                <button type="button" class="btn btn-outline btn-sm" data-download-doc="Workers_Group_Health_Directory_2026" data-doc-type="Group Hospital Directory">
+                  <i class="fa-solid fa-download"></i> Download Directory
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Corporate Document Master Register Table -->
+          <div class="dashboard-card" style="margin-bottom: 24px;">
+            <div class="card-header-flex">
+              <h3 class="card-heading"><i class="fa-solid fa-table-list text-accent"></i> Enterprise Document Master Register</h3>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Showing <strong>6</strong> corporate documents</span>
+            </div>
+            <div class="table-responsive-box">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Report Code</th>
+                    <th>Document Title</th>
+                    <th>Category</th>
+                    <th>Issue Date</th>
+                    <th>File Format</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>REP-AUD-2026-MST</strong></td>
+                    <td>Annual Corporate Coverage Audit Report</td>
+                    <td>Audit Summary</td>
+                    <td>Oct 15, 2026</td>
+                    <td><span class="status-badge status-active">TXT Record</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm" data-download-doc="Annual_Coverage_Audit_2026" data-doc-type="Audit Report">Download</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>REP-RNW-2026-Q4</strong></td>
+                    <td>Q4 Renewal Checklist & Underwriting Schedule</td>
+                    <td>Renewal Form</td>
+                    <td>Oct 01, 2026</td>
+                    <td><span class="status-badge status-active">TXT Record</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm" data-download-doc="Q4_Renewal_Checklist_Sterling" data-doc-type="Checklist">Download</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>REP-LIAB-2026-CMP</strong></td>
+                    <td>Commercial Liability Comparison Benchmark</td>
+                    <td>Risk Analysis</td>
+                    <td>Sep 20, 2026</td>
+                    <td><span class="status-badge status-active">TXT Record</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm" data-download-doc="Commercial_Liability_Comparison_Report" data-doc-type="Comparison">Download</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>REP-FLT-2026-INSP</strong></td>
+                    <td>Commercial Fleet Safety Inspection Certificate</td>
+                    <td>Motor & Transit</td>
+                    <td>Dec 05, 2025</td>
+                    <td><span class="status-badge status-active">TXT Record</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm" data-download-doc="Fleet_Inspection_Certificate_2026" data-doc-type="Fleet Certificate">Download</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>REP-LSS-2026-ARCH</strong></td>
+                    <td>3-Year Corporate Verified Loss Run Statement</td>
+                    <td>Loss Run</td>
+                    <td>Jan 15, 2026</td>
+                    <td><span class="status-badge status-active">TXT Record</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm" data-download-doc="3_Year_Loss_Run_Report_2023_2026" data-doc-type="Loss Run">Download</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>REP-GRP-2026-HLTH</strong></td>
+                    <td>Workers Group Health & Hospital Network Guide</td>
+                    <td>Group Floater</td>
+                    <td>Nov 12, 2025</td>
+                    <td><span class="status-badge status-active">TXT Record</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm" data-download-doc="Workers_Group_Health_Directory_2026" data-doc-type="Hospital Directory">Download</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             View 6: Profile & Support
+             ========================================== -->
+        <section id="client-profile" class="dashboard-section" hidden>
+          <!-- Enterprise Profile Metrics Grid -->
+          <div class="dashboard-metrics-grid">
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Corporate Account</div>
+                <div class="metric-value user-display-name">Sterling Logistics LLC</div>
+                <div class="metric-subtext">Verified Business Client</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-building"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Registration ID</div>
+                <div class="metric-value">CORP-NY-89412</div>
+                <div class="metric-subtext">State Commercial Charter</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-stamp"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Broker Service Level</div>
+                <div class="metric-value">Tier 1 SLA</div>
+                <div class="metric-subtext">2-Hour priority resolution</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-award"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Underwriting Review</div>
+                <div class="metric-value">Nov 15, 2026</div>
+                <div class="metric-subtext">Next annual audit cycle</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-calendar-check"></i></div>
+            </div>
+          </div>
+
+          <div class="profile-layout-grid">
+            <div class="dashboard-card">
+              <h3 class="card-heading" style="margin-bottom: 18px;"><i class="fa-solid fa-building text-accent"></i> Corporate Account Details</h3>
+              <form id="profile-settings-form" novalidate>
+                <div class="form-row-2col">
+                  <div>
+                    <label class="form-label">Enterprise Name</label>
+                    <input type="text" id="client-profile-name" class="form-control" value="Sterling Logistics LLC" required>
+                  </div>
+                  <div>
+                    <label class="form-label">Corporate Reg. ID</label>
+                    <input type="text" class="form-control" value="CORP-NY-89412" readonly>
+                  </div>
+                </div>
+
+                <div style="margin-bottom: 16px;">
+                  <label class="form-label">Primary Account Officer Email</label>
+                  <input type="email" id="client-profile-email" class="form-control" value="d.sterling@sterling-logistics.test" required>
+                </div>
+
+                <div style="margin-bottom: 16px;">
+                  <label class="form-label">Office Phone Number</label>
+                  <input type="tel" class="form-control" value="+1 (555) 839-4400" required>
+                </div>
+
+                <div style="margin-bottom: 24px;">
+                  <label class="form-label">Registered Corporate Address</label>
+                  <input type="text" class="form-control" value="750 Commerce Way, Tower B, New York, NY">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-sm">
+                  <i class="fa-solid fa-floppy-disk"></i> Update Enterprise Preferences
+                </button>
+              </form>
+            </div>
+
+            <div>
+              <div class="dashboard-card">
+                <h3 class="card-heading" style="margin-bottom: 14px;"><i class="fa-solid fa-headset text-accent"></i> Commercial Advisory Desk</h3>
+                <p style="font-size: 0.885rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
+                  Your dedicated account manager is available for quarterly risk reviews and policy endorsements.
+                </p>
+                <div style="background: var(--bg-page); padding: 14px; border-radius: var(--radius-sm); font-size: 0.85rem; margin-bottom: 16px;">
+                  <strong>Customer Helpline:</strong> 1800 789 456 (Toll Free)<br>
+                  <strong>Support Email:</strong> info@stackly.com<br>
+                  <strong>Headquarters:</strong> Salem, Tamil Nadu
+                </div>
+                <button type="button" class="btn btn-accent btn-sm" style="width: 100%;" data-modal-target="new-claim-modal">
+                  <i class="fa-solid fa-paper-plane"></i> Submit Priority Inquiry
+                </button>
+              </div>
+
+              <div class="dashboard-card">
+                <h3 class="card-heading" style="margin-bottom: 14px;"><i class="fa-solid fa-circle-question text-accent"></i> Client FAQs</h3>
+                <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+                  <p style="margin-bottom: 8px;"><strong>Q: How do we add new commercial vehicles to our fleet?</strong><br>File a request ticket with vehicle identification details.</p>
+                  <p><strong>Q: Where are past surveyor inspection reports archived?</strong><br>Refer to the Documents & Reports view.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enterprise Actions Bar -->
+          <div class="dashboard-card">
+            <div class="card-header-flex">
+              <h3 class="card-heading"><i class="fa-solid fa-briefcase text-accent"></i> Enterprise Account & Governance Actions</h3>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Executive Governance</span>
+            </div>
+            <div class="quick-actions-bar">
+              <button type="button" class="btn btn-outline btn-sm">
+                <i class="fa-solid fa-user-plus"></i> Assign Authorized Officer
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" data-download-doc="Sterling_W9_Corporate_Tax_Profile" data-doc-type="Corporate Tax Profile W-9">
+                <i class="fa-solid fa-file-invoice"></i> Download W-9 & Tax Profile
+              </button>
+              <button type="button" class="btn btn-outline btn-sm logout-trigger">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> Conclude Enterprise Session
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Policy Details Modal -->
+  <div class="modal" id="policy-details-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="policy-modal-name">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span id="policy-modal-category" style="font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">Category</span>
+          <h3 class="modal-title" id="policy-modal-name">Policy Details</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);" id="policy-modal-number">POL-ID</span>
+        </div>
+        <button type="button" class="modal-close-btn" data-modal-close aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Policy Status</span>
+          <span id="policy-modal-status" class="status-badge status-active">Active</span>
+        </div>
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Coverage Sum Limit</span>
+          <span id="policy-modal-coverage">Coverage Limit</span>
+        </div>
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Monthly Premium</span>
+          <span id="policy-modal-premium">Premium</span>
+        </div>
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Policy Validity</span>
+          <span id="policy-modal-dates">Dates</span>
+        </div>
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Applicable Deductible</span>
+          <span id="policy-modal-deductible">Deductible</span>
+        </div>
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Covered Members / Asset</span>
+          <span id="policy-modal-members">Members</span>
+        </div>
+
+        <div style="margin-top: 18px;">
+          <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--primary); margin-bottom: 6px;">Exclusions Summary</h4>
+          <p id="policy-modal-exclusions" style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;"></p>
+        </div>
+
+        <div style="background-color: var(--accent-100); border-left: 4px solid var(--accent); padding: 12px 14px; margin-top: 16px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 0.8rem; color: var(--primary);">
+          <strong>Client-Side Demo Record:</strong> Data is simulated for demonstration and does not constitute a legally binding underwriting commitment.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline btn-sm" data-modal-close>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Claim Details Modal -->
+  <div class="modal" id="claim-details-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="claim-modal-id">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span id="claim-modal-category" style="font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">Category</span>
+          <h3 class="modal-title" id="claim-modal-id">Claim Details</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);" id="claim-modal-policy">Policy Ref</span>
+        </div>
+        <button type="button" class="modal-close-btn" data-modal-close aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Status</span>
+          <span id="claim-modal-status" class="status-badge status-under-review">Under Review</span>
+        </div>
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Claimed Indemnity</span>
+          <span id="claim-modal-amount" style="font-weight: 700; color: var(--primary);">$0.00</span>
+        </div>
+
+        <div style="margin-top: 14px;">
+          <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--primary); margin-bottom: 6px;">Incident Description</h4>
+          <p id="claim-modal-desc" style="font-size: 0.875rem; color: var(--text-body);"></p>
+        </div>
+
+        <div style="margin-top: 14px;">
+          <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--primary); margin-bottom: 6px;">Adjudication Notes</h4>
+          <p id="claim-modal-notes" style="font-size: 0.875rem; color: var(--text-muted);"></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline btn-sm" data-modal-close>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- New Claim / Request Modal -->
+  <div class="modal" id="new-claim-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="new-claim-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="new-claim-title">Submit Support or Claim Request</h3>
+        <button type="button" class="modal-close-btn" data-modal-close aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <form id="client-claim-request-form" novalidate>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="request-policy" class="form-label">Associated Policy Portfolio *</label>
+            <select id="request-policy" class="form-control" required>
+              <option value="">Select policy...</option>
+              <option value="POL-HL-9482">POL-HL-9482 (HealthGuard Comprehensive)</option>
+              <option value="POL-LF-3319">POL-LF-3319 (FamilySecure Keyman Term)</option>
+              <option value="POL-MT-7741">POL-MT-7741 (DriveProtect Fleet Auto)</option>
+              <option value="POL-HM-1185">POL-HM-1185 (HomeSafe Commercial Facility)</option>
+              <option value="POL-TR-5021">POL-TR-5021 (GlobalVoyage Delegation)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="request-type" class="form-label">Request Type *</label>
+            <select id="request-type" class="form-control" required>
+              <option value="">Select request type...</option>
+              <option value="New Claim Notification">New Claim Notification</option>
+              <option value="Policy Endorsement / Modification">Policy Endorsement / Modification</option>
+              <option value="Renewal Consultation">Renewal Consultation</option>
+              <option value="Coverage Limit Increase">Coverage Limit Increase</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="request-details" class="form-label">Details / Scenario * (Min 15 chars)</label>
+            <textarea id="request-details" class="form-control" rows="4" placeholder="Describe the incident or endorsement requested in detail..." required></textarea>
+          </div>
+
+          <div style="background-color: var(--primary-50); padding: 12px; border-radius: var(--radius-sm); font-size: 0.8rem; color: var(--text-muted);">
+            <i class="fa-solid fa-shield-halved text-accent"></i> Request will be recorded in demonstration session state with a simulated reference code.
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary btn-sm">Submit Request Demo</button>
+          <button type="button" class="btn btn-outline btn-sm" data-modal-close>Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Core JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>

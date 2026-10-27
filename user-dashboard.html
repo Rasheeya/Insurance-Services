@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard — Stackly Insurance Services</title>
+  <meta name="description" content="Personal user insurance dashboard for managing policies, tracking claim timelines, reviewing renewal dates, and downloading documents.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/Stackly logo.webp">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+  <!-- Page Specific CSS -->
+  <link rel="stylesheet" href="css/user-dashboard.css">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <!-- Backdrop for mobile drawer -->
+    <div class="sidebar-backdrop"></div>
+
+    <!-- Collapsible Sidebar Navigation -->
+    <aside class="dashboard-sidebar" aria-label="Dashboard Sidebar Navigation">
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-brand">
+          <img src="assets/Stackly logo.webp" alt="Stackly Logo" width="40" height="40">
+          <div class="brand-text">
+            <span class="brand-title">Stackly</span>
+          </div>
+        </a>
+        <button type="button" class="sidebar-close-btn" aria-label="Close navigation menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <ul class="sidebar-menu-list">
+        <li class="sidebar-section-header">Dashboard Views</li>
+        <li>
+          <a class="dashboard-nav-item active" data-section="overview" role="tab" aria-selected="true">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span class="nav-text">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a class="dashboard-nav-item" data-section="my-policies" role="tab" aria-selected="false">
+            <i class="fa-solid fa-file-shield"></i>
+            <span class="nav-text">My Policies</span>
+          </a>
+        </li>
+        <li>
+          <a class="dashboard-nav-item" data-section="claims-tracking" role="tab" aria-selected="false">
+            <i class="fa-solid fa-route"></i>
+            <span class="nav-text">Claims Tracking</span>
+          </a>
+        </li>
+        <li>
+          <a class="dashboard-nav-item" data-section="renewals" role="tab" aria-selected="false">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span class="nav-text">Renewals</span>
+          </a>
+        </li>
+        <li>
+          <a class="dashboard-nav-item" data-section="documents" role="tab" aria-selected="false">
+            <i class="fa-solid fa-folder-open"></i>
+            <span class="nav-text">Documents</span>
+          </a>
+        </li>
+        <li>
+          <a class="dashboard-nav-item" data-section="profile-settings" role="tab" aria-selected="false">
+            <i class="fa-solid fa-user-gear"></i>
+            <span class="nav-text">Profile & Settings</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <button type="button" class="sidebar-logout-btn logout-trigger" title="Logout from session">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <span class="nav-text">Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="dashboard-main">
+      <!-- Dashboard Header -->
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button type="button" class="sidebar-toggle-btn" aria-label="Toggle navigation drawer">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <h1 class="current-section-title">Overview</h1>
+        </div>
+
+        <!-- Mobile-Only Centered Brand Logo -->
+        <a href="index.html" class="mobile-brand-logo" aria-label="Stackly Home">
+          <img src="assets/Stackly logo.webp" alt="Stackly Logo" width="28" height="28">
+          <span class="mobile-brand-name"><span class="brand-text-main">STACK</span><span class="brand-text-accent">LY</span></span>
+        </a>
+
+        <div class="header-right">
+          <div class="demo-date-badge">
+            <i class="fa-regular fa-calendar"></i>
+            <span>October 23, 2026 (Demo)</span>
+          </div>
+
+          <button type="button" class="header-icon-btn" aria-label="Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notif-badge"></span>
+          </button>
+
+          <div class="header-user-profile" onclick="document.querySelector('[data-section=\'profile-settings\']')?.click()" role="button" tabindex="0" title="View Profile & Settings">
+            <div class="header-user-info">
+              <div class="header-user-name user-display-name">Alexander Vance</div>
+              <div class="header-user-role user-display-email" style="font-size: 0.75rem; color: var(--text-muted);">alexander.vance@demo.test</div>
+            </div>
+            <div class="header-avatar-circle" aria-label="User Avatar">
+              <span class="avatar-initial">A</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Scrollable Body -->
+      <div class="dashboard-content-body">
+
+        <!-- ==========================================
+             Section 1: Overview
+             ========================================== -->
+        <section id="overview" class="dashboard-section is-active">
+          <!-- Welcome Section -->
+          <div class="welcome-banner dashboard-card">
+            <div class="welcome-content">
+              <h2 class="welcome-heading">
+                <span class="welcome-lead">Welcome back,</span>
+                <span class="welcome-name user-display-name">Alexander Vance</span>
+              </h2>
+              <p class="welcome-subtitle">
+                Here is what is happening across your active insurance policies, claim tracking, and coverage renewals today.
+              </p>
+            </div>
+            <div class="welcome-badge">
+              <i class="fa-solid fa-circle-check text-accent"></i> Active Policyholder
+            </div>
+          </div>
+
+          <!-- Summary Cards -->
+          <div class="dashboard-metrics-grid">
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Total Policies</div>
+                <div class="metric-value">5</div>
+                <div class="metric-subtext">Across 4 categories</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-layer-group"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Active Policies</div>
+                <div class="metric-value">4</div>
+                <div class="metric-subtext">Up to date & protected</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-shield-halved"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Pending Claims</div>
+                <div class="metric-value">1</div>
+                <div class="metric-subtext">Claim #CLM-2026-104</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Upcoming Renewals</div>
+                <div class="metric-value">2</div>
+                <div class="metric-subtext">Within next 45 days</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-calendar-check"></i></div>
+            </div>
+          </div>
+
+          <!-- Charts Row -->
+          <div class="overview-charts-grid">
+            <div class="dashboard-card">
+              <div class="card-header-flex">
+                <h3 class="card-heading"><i class="fa-solid fa-chart-column text-accent"></i> Annual Claims Settlement History</h3>
+                <span class="status-badge status-active">2026 Demo Data</span>
+              </div>
+              <div class="chart-wrapper-box">
+                <canvas id="userClaimsChart"></canvas>
+              </div>
+            </div>
+
+            <div class="dashboard-card">
+              <div class="card-header-flex">
+                <h3 class="card-heading"><i class="fa-solid fa-chart-pie text-accent"></i> Policy Distribution</h3>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Sum Insured Share</span>
+              </div>
+              <div class="chart-wrapper-box">
+                <canvas id="userPolicyChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity Table Preview & Quick Actions -->
+          <div class="dashboard-card" style="margin-bottom: 24px;">
+            <div class="card-header-flex">
+              <h3 class="card-heading"><i class="fa-solid fa-list-check text-accent"></i> Active Policies at a Glance</h3>
+              <button type="button" class="btn btn-outline btn-sm" onclick="document.querySelector('[data-section=\'my-policies\']').click()">
+                View All Policies <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+            <div class="table-responsive-box">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Policy Identifier</th>
+                    <th>Plan Coverage</th>
+                    <th>Category</th>
+                    <th>Coverage Sum</th>
+                    <th>Renewal Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>POL-HL-9482</strong></td>
+                    <td>HealthGuard Comprehensive Family Floater</td>
+                    <td>Health Insurance</td>
+                    <td>$1,000,000</td>
+                    <td>Nov 12, 2026</td>
+                    <td><span class="status-badge status-active">Active</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-HL-9482">View</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>POL-LF-3319</strong></td>
+                    <td>FamilySecure 20-Year Term Protection</td>
+                    <td>Life Insurance</td>
+                    <td>$500,000</td>
+                    <td>Mar 01, 2027</td>
+                    <td><span class="status-badge status-active">Active</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-LF-3319">View</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>POL-HM-1185</strong></td>
+                    <td>HomeSafe Structure & Contents Shield</td>
+                    <td>Home Insurance</td>
+                    <td>$550,000</td>
+                    <td>Nov 01, 2026</td>
+                    <td><span class="status-badge status-expiring-soon">Expiring Soon</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-HM-1185">View</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Quick Actions Bar -->
+          <div class="dashboard-card">
+            <div class="card-header-flex">
+              <h3 class="card-heading"><i class="fa-solid fa-bolt text-accent"></i> Quick Policy Actions</h3>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">One-Click Short-cuts</span>
+            </div>
+            <div class="quick-actions-bar">
+              <button type="button" class="btn btn-primary btn-sm" onclick="document.querySelector('[data-section=\'claims-tracking\']').click()">
+                <i class="fa-solid fa-magnifying-glass"></i> Track Active Claim
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="document.querySelector('[data-section=\'renewals\']').click()">
+                <i class="fa-solid fa-rotate"></i> Review Expiring Policies
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="document.querySelector('[data-section=\'documents\']').click()">
+                <i class="fa-solid fa-download"></i> Download Policy Certificates
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="document.querySelector('[data-section=\'profile-settings\']').click()">
+                <i class="fa-solid fa-user-gear"></i> Manage Account Profile
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             Section 2: My Policies
+             ========================================== -->
+        <section id="my-policies" class="dashboard-section" hidden>
+          <!-- Summary Metrics Cards -->
+          <div class="dashboard-metrics-grid">
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Total Sum Insured</div>
+                <div class="metric-value">$2.08M</div>
+                <div class="metric-subtext">Combined protection cap</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Monthly Premium</div>
+                <div class="metric-value">$355.00</div>
+                <div class="metric-subtext">Outflow across 5 policies</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-credit-card"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Protected Nominees</div>
+                <div class="metric-value">3 Members</div>
+                <div class="metric-subtext">Family floater & beneficiaries</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-users"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Policy Health Score</div>
+                <div class="metric-value">98%</div>
+                <div class="metric-subtext">All contracts in good standing</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-heart-pulse"></i></div>
+            </div>
+          </div>
+
+          <!-- Charts & Scope Row -->
+          <div class="overview-charts-grid" style="margin-bottom: 24px;">
+            <div class="dashboard-card">
+              <div class="card-header-flex">
+                <h3 class="card-heading"><i class="fa-solid fa-chart-column text-accent"></i> Coverage Limit by Policy ($k)</h3>
+                <span class="status-badge status-active">2026 Portfolio</span>
+              </div>
+              <div class="chart-wrapper-box">
+                <canvas id="userPolicyCoverageChart"></canvas>
+              </div>
+            </div>
+
+            <div class="dashboard-card">
+              <div class="card-header-flex">
+                <h3 class="card-heading"><i class="fa-solid fa-circle-check text-accent"></i> Protection Scope Highlights</h3>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Verified Benefits</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 10px;">
+                <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: var(--bg-page); border-radius: var(--radius-sm);">
+                  <i class="fa-solid fa-hospital-user text-primary" style="font-size: 1.25rem; margin-top: 2px;"></i>
+                  <div>
+                    <strong style="color: var(--primary); font-size: 0.9rem;">Cashless Hospitalization Network</strong>
+                    <p style="margin: 2px 0 0; font-size: 0.8rem; color: var(--text-muted);">9,400+ partner network facilities with zero upfront admission deposit.</p>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: var(--bg-page); border-radius: var(--radius-sm);">
+                  <i class="fa-solid fa-car-burst text-accent" style="font-size: 1.25rem; margin-top: 2px;"></i>
+                  <div>
+                    <strong style="color: var(--primary); font-size: 0.9rem;">Zero-Depreciation Auto Repair</strong>
+                    <p style="margin: 2px 0 0; font-size: 0.8rem; color: var(--text-muted);">100% parts replacement coverage with lifetime workshop repair guarantee.</p>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: var(--bg-page); border-radius: var(--radius-sm);">
+                  <i class="fa-solid fa-plane-departure text-primary" style="font-size: 1.25rem; margin-top: 2px;"></i>
+                  <div>
+                    <strong style="color: var(--primary); font-size: 0.9rem;">24/7 Global Medical Evacuation</strong>
+                    <p style="margin: 2px 0 0; font-size: 0.8rem; color: var(--text-muted);">Worldwide emergency evacuation & repatriation concierge included on travel.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filter Toolbar -->
+          <div class="filter-toolbar">
+            <div class="filter-group">
+              <input type="text" id="policy-search" class="filter-input" placeholder="Search by policy name or ID..." aria-label="Search policies">
+              
+              <select id="policy-category-filter" class="filter-select" aria-label="Filter policies by category">
+                <option value="all">All Categories</option>
+                <option value="Health Insurance">Health Insurance</option>
+                <option value="Life Insurance">Life Insurance</option>
+                <option value="Motor Insurance">Motor Insurance</option>
+                <option value="Home Insurance">Home Insurance</option>
+                <option value="Travel Insurance">Travel Insurance</option>
+              </select>
+
+              <select id="policy-status-filter" class="filter-select" aria-label="Filter policies by status">
+                <option value="all">All Statuses</option>
+                <option value="Active">Active</option>
+                <option value="Expiring Soon">Expiring Soon</option>
+                <option value="Pending Review">Pending Review</option>
+              </select>
+            </div>
+
+            <div style="font-size: 0.85rem; color: var(--text-muted);">
+              Showing <strong>5</strong> demonstration policies
+            </div>
+          </div>
+
+          <div class="table-responsive-box">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Policy ID</th>
+                  <th>Policy Name</th>
+                  <th>Category</th>
+                  <th>Coverage Limit</th>
+                  <th>Renewal Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="policy-table-body">
+                <tr class="policy-record-item" data-name="HealthGuard Comprehensive Family Shield" data-number="POL-HL-9482" data-category="Health Insurance" data-status="Active">
+                  <td><strong>POL-HL-9482</strong></td>
+                  <td>HealthGuard Comprehensive Family</td>
+                  <td>Health Insurance</td>
+                  <td>$1,000,000 Aggregate</td>
+                  <td>Nov 12, 2026</td>
+                  <td><span class="status-badge status-active">Active</span></td>
+                  <td>
+                    <button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-HL-9482">View Details</button>
+                  </td>
+                </tr>
+
+                <tr class="policy-record-item" data-name="FamilySecure 20-Year Term Protection" data-number="POL-LF-3319" data-category="Life Insurance" data-status="Active">
+                  <td><strong>POL-LF-3319</strong></td>
+                  <td>FamilySecure 20-Year Term</td>
+                  <td>Life Insurance</td>
+                  <td>$500,000 Lump Sum</td>
+                  <td>Mar 01, 2027</td>
+                  <td><span class="status-badge status-active">Active</span></td>
+                  <td>
+                    <button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-LF-3319">View Details</button>
+                  </td>
+                </tr>
+
+                <tr class="policy-record-item" data-name="DriveProtect Zero-Depreciation Auto" data-number="POL-MT-7741" data-category="Motor Insurance" data-status="Active">
+                  <td><strong>POL-MT-7741</strong></td>
+                  <td>DriveProtect Auto Comprehensive</td>
+                  <td>Motor Insurance</td>
+                  <td>Agreed Value ($38.5k)</td>
+                  <td>Dec 05, 2026</td>
+                  <td><span class="status-badge status-active">Active</span></td>
+                  <td>
+                    <button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-MT-7741">View Details</button>
+                  </td>
+                </tr>
+
+                <tr class="policy-record-item" data-name="HomeSafe Structure & Contents Shield" data-number="POL-HM-1185" data-category="Home Insurance" data-status="Expiring Soon">
+                  <td><strong>POL-HM-1185</strong></td>
+                  <td>HomeSafe Structure & Contents</td>
+                  <td>Home Insurance</td>
+                  <td>$450,000 Structure</td>
+                  <td>Nov 01, 2026</td>
+                  <td><span class="status-badge status-expiring-soon">Expiring Soon</span></td>
+                  <td>
+                    <button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-HM-1185">View Details</button>
+                  </td>
+                </tr>
+
+                <tr class="policy-record-item" data-name="GlobalVoyage Comprehensive Worldwide Travel" data-number="POL-TR-5021" data-category="Travel Insurance" data-status="Pending Review">
+                  <td><strong>POL-TR-5021</strong></td>
+                  <td>GlobalVoyage Worldwide Travel</td>
+                  <td>Travel Insurance</td>
+                  <td>$500,000 Emergency Med</td>
+                  <td>Jan 10, 2027</td>
+                  <td><span class="status-badge status-pending-review">Pending Review</span></td>
+                  <td>
+                    <button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-TR-5021">View Details</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div id="no-policies-notice" style="display: none; padding: 40px; text-align: center; color: var(--text-muted);">
+              <i class="fa-solid fa-magnifying-glass" style="font-size: 2rem; margin-bottom: 10px; color: var(--accent);"></i>
+              <p>No policy records matched your filter criteria.</p>
+            </div>
+          </div>
+
+          <!-- Bottom Actions Bar -->
+          <div class="dashboard-card" style="margin-top: 24px;">
+            <div class="card-header-flex">
+              <h3 class="card-heading"><i class="fa-solid fa-bolt text-accent"></i> Policy Management Actions</h3>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Instant Services</span>
+            </div>
+            <div class="quick-actions-bar">
+              <button type="button" class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-layer-group"></i> Compare Coverage Tiers
+              </button>
+              <button type="button" class="btn btn-outline btn-sm">
+                <i class="fa-solid fa-file-pen"></i> Request Policy Endorsement
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" data-download-doc="All_Policies_Portfolio_Summary" data-doc-type="Complete Portfolio Schedule">
+                <i class="fa-solid fa-file-arrow-down"></i> Download Full Portfolio Summary
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             Section 3: Claims Tracking
+             ========================================== -->
+        <section id="claims-tracking" class="dashboard-section" hidden>
+          <!-- Claims Metrics Grid -->
+          <div class="dashboard-metrics-grid">
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Historical Claims</div>
+                <div class="metric-value">3 Filed</div>
+                <div class="metric-subtext">Across health, auto & home</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-file-invoice"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Total Settled</div>
+                <div class="metric-value">$2,980.00</div>
+                <div class="metric-subtext">Disbursed to policyholder</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-circle-check"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Under Active Review</div>
+                <div class="metric-value">$1,450.00</div>
+                <div class="metric-subtext">Claim #CLM-2026-104</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Avg Settlement Speed</div>
+                <div class="metric-value">4.2 Days</div>
+                <div class="metric-subtext">Fast-track cashless processing</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-bolt"></i></div>
+            </div>
+          </div>
+
+          <!-- Timeline & Charts Row -->
+          <div class="overview-charts-grid">
+            <div class="dashboard-card">
+              <div class="card-header-flex">
+                <div>
+                  <h3 class="card-heading"><i class="fa-solid fa-timeline text-accent"></i> Active Claim Timeline: #CLM-2026-104</h3>
+                  <span style="font-size: 0.85rem; color: var(--text-muted);">HealthGuard Comprehensive Family • Filed Oct 04, 2026</span>
+                </div>
+                <span class="status-badge status-under-review">Under Review</span>
+              </div>
+
+              <div class="claim-timeline-wrapper">
+                <div class="claim-timeline-step is-complete">
+                  <div class="timeline-step-bubble"><i class="fa-solid fa-check"></i></div>
+                  <div class="timeline-step-title">1. Claim Submitted</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Oct 04, 2026</div>
+                </div>
+
+                <div class="claim-timeline-step is-current">
+                  <div class="timeline-step-bubble"><i class="fa-solid fa-clock"></i></div>
+                  <div class="timeline-step-title">2. Under Review</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">In Progress</div>
+                </div>
+
+                <div class="claim-timeline-step">
+                  <div class="timeline-step-bubble">3</div>
+                  <div class="timeline-step-title">3. Assessment</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Pending</div>
+                </div>
+
+                <div class="claim-timeline-step">
+                  <div class="timeline-step-bubble">4</div>
+                  <div class="timeline-step-title">4. Decision Recorded</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Simulated</div>
+                </div>
+              </div>
+
+              <div style="background-color: var(--primary-50); padding: 18px; border-radius: var(--radius-sm); font-size: 0.875rem;">
+                <strong>Simulated Claim Notes:</strong> Outpatient invoices and attending physician diagnosis received. Underwriter adjudication active.
+                <em style="display: block; margin-top: 4px; color: var(--text-muted);">Demonstration tracking interface. Binding approvals require authorized insurer settlement.</em>
+              </div>
+            </div>
+
+            <div class="dashboard-card">
+              <div class="card-header-flex">
+                <h3 class="card-heading"><i class="fa-solid fa-chart-line text-accent"></i> Monthly Settlement Trend</h3>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">2026 Payouts ($)</span>
+              </div>
+              <div class="chart-wrapper-box">
+                <canvas id="userClaimsTrendChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-card" style="margin-bottom: 24px;">
+            <div class="card-header-flex">
+              <h3 class="card-heading"><i class="fa-solid fa-clock-rotate-left text-accent"></i> All Historical Claims Register</h3>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Showing <strong>3</strong> total filings</span>
+            </div>
+            <div class="table-responsive-box">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Claim ID</th>
+                    <th>Category</th>
+                    <th>Filed Date</th>
+                    <th>Claimed Amount</th>
+                    <th>Status</th>
+                    <th>Last Updated</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>CLM-2026-104</strong></td>
+                    <td>Health Insurance</td>
+                    <td>Oct 04, 2026</td>
+                    <td>$1,450.00</td>
+                    <td><span class="status-badge status-under-review">Under Review</span></td>
+                    <td>Oct 18, 2026</td>
+                    <td>
+                      <button type="button" class="btn btn-outline btn-sm" data-view-claim="CLM-2026-104">View Details</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>CLM-2026-081</strong></td>
+                    <td>Motor Insurance</td>
+                    <td>Feb 12, 2026</td>
+                    <td>$680.00</td>
+                    <td><span class="status-badge status-decision-recorded">Decision Recorded</span></td>
+                    <td>Feb 16, 2026</td>
+                    <td>
+                      <button type="button" class="btn btn-outline btn-sm" data-view-claim="CLM-2026-081">View Details</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>CLM-2026-059</strong></td>
+                    <td>Home Insurance</td>
+                    <td>Jul 20, 2026</td>
+                    <td>$2,300.00</td>
+                    <td><span class="status-badge status-decision-recorded">Decision Recorded</span></td>
+                    <td>Jul 28, 2026</td>
+                    <td>
+                      <button type="button" class="btn btn-outline btn-sm" data-view-claim="CLM-2026-059">View Details</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Claims Actions Bar -->
+          <div class="dashboard-card">
+            <div class="card-header-flex">
+              <h3 class="card-heading"><i class="fa-solid fa-headset text-accent"></i> Claims Concierge & Actions</h3>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">24/7 Policyholder Assistance</span>
+            </div>
+            <div class="quick-actions-bar">
+              <button type="button" class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-plus-circle"></i> File New Claim (Demo)
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" data-download-doc="Standard_Claim_Intake_Form" data-doc-type="Official Claim Checklist">
+                <i class="fa-solid fa-file-pdf"></i> Download Claim Form
+              </button>
+              <a href="404.html" class="btn btn-outline btn-sm">
+                <i class="fa-solid fa-phone"></i> Emergency Helpline (1800 789 456)
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             Section 4: Renewals
+             ========================================== -->
+        <section id="renewals" class="dashboard-section" hidden>
+          <!-- Renewal Metrics Grid -->
+          <div class="dashboard-metrics-grid">
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Immediate Action</div>
+                <div class="metric-value">1 Policy</div>
+                <div class="metric-subtext">Due in under 10 days</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Notice Dispatched</div>
+                <div class="metric-value">1 Policy</div>
+                <div class="metric-subtext">Due within 30 days</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-envelope-open-text"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Q4 Premium Due</div>
+                <div class="metric-value">$2,940.00</div>
+                <div class="metric-subtext">Combined renewal outflow</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Auto-Renewal</div>
+                <div class="metric-value">1 Active</div>
+                <div class="metric-subtext">Life policy enrolled</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-circle-check"></i></div>
+            </div>
+          </div>
+
+          <!-- Renewal Visual Grid -->
+          <div class="overview-charts-grid">
+            <!-- Urgent Renewal Notice Card -->
+            <div class="dashboard-card">
+              <div class="card-header-flex">
+                <h3 class="card-heading"><i class="fa-solid fa-bell text-accent"></i> Priority Renewal Attention</h3>
+                <span class="status-badge status-expiring-soon">Action Needed</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 10px;">
+                <div style="background: var(--bg-page); padding: 16px; border-radius: var(--radius-sm); border-left: 4px solid var(--accent);">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <strong style="color: var(--primary);">HomeSafe Structure & Contents Shield (POL-HM-1185)</strong>
+                    <span class="renewal-days-badge badge-danger">9 days left</span>
+                  </div>
+                  <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0 0 10px;">
+                    Expiry Date: November 01, 2026 • Annual Premium: $660.00 / yr
+                  </p>
+                  <button type="button" class="btn btn-accent btn-sm">
+                    <i class="fa-solid fa-rotate"></i> Renew HomeSafe Policy Now (Demo)
+                  </button>
+                </div>
+
+                <div style="background: var(--bg-page); padding: 16px; border-radius: var(--radius-sm); border-left: 4px solid var(--primary);">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <strong style="color: var(--primary);">HealthGuard Comprehensive Family (POL-HL-9482)</strong>
+                    <span class="renewal-days-badge badge-warning">20 days left</span>
+                  </div>
+                  <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0 0 10px;">
+                    Expiry Date: November 12, 2026 • Annual Premium: $2,280.00 / yr
+                  </p>
+                  <button type="button" class="btn btn-outline btn-sm">
+                    <i class="fa-solid fa-file-invoice"></i> Review HealthGuard Terms
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Renewal Premium Outflow Chart -->
+            <div class="dashboard-card">
+              <div class="card-header-flex">
+                <h3 class="card-heading"><i class="fa-solid fa-chart-column text-accent"></i> Annual Renewal Premium Outflow ($)</h3>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">By Policy</span>
+              </div>
+              <div class="chart-wrapper-box">
+                <canvas id="userRenewalsChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-card">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-heading"><i class="fa-solid fa-calendar-days text-accent"></i> Complete Policy Renewal Calendar</h3>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Dynamic client-side countdown relative to anchor demo date (Oct 23, 2026)</span>
+              </div>
+              <span class="status-badge status-active">5 Contracts Scheduled</span>
+            </div>
+
+            <div class="table-responsive-box">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Policy Identifier</th>
+                    <th>Coverage Name</th>
+                    <th>Expiry / Renewal Date</th>
+                    <th>Days Remaining</th>
+                    <th>Annual Premium</th>
+                    <th>Renewal Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-renewal-date="2026-11-01">
+                    <td><strong>POL-HM-1185</strong></td>
+                    <td>HomeSafe Structure & Contents</td>
+                    <td>November 01, 2026</td>
+                    <td><span class="renewal-days-badge">Calculating...</span></td>
+                    <td>$660.00 / yr</td>
+                    <td><span class="status-badge status-expiring-soon">Action Needed</span></td>
+                    <td>
+                      <button type="button" class="btn btn-accent btn-sm">Renew Policy</button>
+                    </td>
+                  </tr>
+
+                  <tr data-renewal-date="2026-11-12">
+                    <td><strong>POL-HL-9482</strong></td>
+                    <td>HealthGuard Comprehensive Family</td>
+                    <td>November 12, 2026</td>
+                    <td><span class="renewal-days-badge">Calculating...</span></td>
+                    <td>$2,280.00 / yr</td>
+                    <td><span class="status-badge status-expiring-soon">Notice Sent</span></td>
+                    <td>
+                      <button type="button" class="btn btn-outline btn-sm">Review Terms</button>
+                    </td>
+                  </tr>
+
+                  <tr data-renewal-date="2026-12-05">
+                    <td><strong>POL-MT-7741</strong></td>
+                    <td>DriveProtect Comprehensive Auto</td>
+                    <td>December 05, 2026</td>
+                    <td><span class="renewal-days-badge">Calculating...</span></td>
+                    <td>$780.00 / yr</td>
+                    <td><span class="status-badge status-active">On Schedule</span></td>
+                    <td>
+                      <button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-MT-7741">View Coverage</button>
+                    </td>
+                  </tr>
+
+                  <tr data-renewal-date="2027-01-10">
+                    <td><strong>POL-TR-5021</strong></td>
+                    <td>GlobalVoyage Worldwide Travel</td>
+                    <td>January 10, 2027</td>
+                    <td><span class="renewal-days-badge">Calculating...</span></td>
+                    <td>$140.00 Single</td>
+                    <td><span class="status-badge status-pending-review">Under Review</span></td>
+                    <td>
+                      <button type="button" class="btn btn-outline btn-sm" data-view-policy="POL-TR-5021">View Details</button>
+                    </td>
+                  </tr>
+
+                  <tr data-renewal-date="2027-03-01">
+                    <td><strong>POL-LF-3319</strong></td>
+                    <td>FamilySecure 20-Year Term</td>
+                    <td>March 01, 2027</td>
+                    <td><span class="renewal-days-badge">Calculating...</span></td>
+                    <td>$540.00 / yr</td>
+                    <td><span class="status-badge status-active">Auto-Renew Set</span></td>
+                    <td>
+                      <button type="button" class="btn btn-outline btn-sm">Auto-Renew Settings</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style="margin-top: 20px; font-size: 0.8rem; color: var(--text-muted); background: var(--bg-page); padding: 14px; border-radius: var(--radius-sm);">
+              <i class="fa-solid fa-circle-info text-accent"></i> <strong>Educational Notice:</strong> No live billing transactions or card charges occur on this platform. Renewal notices are simulated.
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             Section 5: Documents
+             ========================================== -->
+        <section id="documents" class="dashboard-section" hidden>
+          <!-- Document Metrics Grid -->
+          <div class="dashboard-metrics-grid">
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Verified Documents</div>
+                <div class="metric-value">6 Files</div>
+                <div class="metric-subtext">Immediate download available</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-folder-closed"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Policy Schedules</div>
+                <div class="metric-value">5 Active</div>
+                <div class="metric-subtext">Health, life, auto, home, travel</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-file-shield"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Tax Statements</div>
+                <div class="metric-value">1 Ready</div>
+                <div class="metric-subtext">Section 80D compliance receipt</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-receipt"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Storage Status</div>
+                <div class="metric-value">Client-Side</div>
+                <div class="metric-subtext">Instant browser generation</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-hard-drive"></i></div>
+            </div>
+          </div>
+
+          <div class="dashboard-card" style="margin-bottom: 24px;">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-heading"><i class="fa-solid fa-file-contract text-accent"></i> Policy Schedules & Verified Certificates</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">
+                  Download verified demonstration certificates formatted with policy specifications and underwriting details.
+                </p>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm" data-download-doc="All_Stackly_Policy_Documents_Package" data-doc-type="Complete Document Archive">
+                <i class="fa-solid fa-file-zipper"></i> Download All Certificates
+              </button>
+            </div>
+
+            <div class="documents-grid">
+              <!-- Doc 1 -->
+              <div class="doc-card">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                  <i class="fa-solid fa-file-lines text-primary" style="font-size: 1.75rem;"></i>
+                  <div>
+                    <h4 style="font-size: 1rem; font-weight: 800; color: var(--primary);">HealthGuard Schedule</h4>
+                    <span style="font-size: 0.775rem; color: var(--text-muted);">Issued Nov 12, 2025 • 28 KB</span>
+                  </div>
+                </div>
+                <p style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 16px;">
+                  Complete family floater policy terms and network cashless hospital provisions.
+                </p>
+                <button type="button" class="btn btn-outline btn-sm" data-download-doc="HealthGuard_Family_Schedule_POL-HL-9482" data-doc-type="Health Insurance Schedule">
+                  <i class="fa-solid fa-download"></i> Download Schedule
+                </button>
+              </div>
+
+              <!-- Doc 2 -->
+              <div class="doc-card">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                  <i class="fa-solid fa-file-shield text-accent" style="font-size: 1.75rem;"></i>
+                  <div>
+                    <h4 style="font-size: 1rem; font-weight: 800; color: var(--primary);">DriveProtect Certificate</h4>
+                    <span style="font-size: 0.775rem; color: var(--text-muted);">Issued Dec 05, 2025 • 24 KB</span>
+                  </div>
+                </div>
+                <p style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 16px;">
+                  Statutory motor vehicle certificate and zero-depreciation repair endorsement.
+                </p>
+                <button type="button" class="btn btn-outline btn-sm" data-download-doc="DriveProtect_Auto_POL-MT-7741" data-doc-type="Motor Insurance Certificate">
+                  <i class="fa-solid fa-download"></i> Download Certificate
+                </button>
+              </div>
+
+              <!-- Doc 3 -->
+              <div class="doc-card">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                  <i class="fa-solid fa-file-invoice-dollar text-primary" style="font-size: 1.75rem;"></i>
+                  <div>
+                    <h4 style="font-size: 1rem; font-weight: 800; color: var(--primary);">Term Life Policy Bond</h4>
+                    <span style="font-size: 0.775rem; color: var(--text-muted);">Issued Mar 01, 2023 • 32 KB</span>
+                  </div>
+                </div>
+                <p style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 16px;">
+                  20-Year pure term life beneficiary declaration and sum-assured schedule.
+                </p>
+                <button type="button" class="btn btn-outline btn-sm" data-download-doc="FamilySecure_Term_Bond_POL-LF-3319" data-doc-type="Life Insurance Bond">
+                  <i class="fa-solid fa-download"></i> Download Policy Bond
+                </button>
+              </div>
+
+              <!-- Doc 4 -->
+              <div class="doc-card">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                  <i class="fa-solid fa-house-chimney text-accent" style="font-size: 1.75rem;"></i>
+                  <div>
+                    <h4 style="font-size: 1rem; font-weight: 800; color: var(--primary);">HomeSafe Structure Schedule</h4>
+                    <span style="font-size: 0.775rem; color: var(--text-muted);">Issued Nov 01, 2025 • 22 KB</span>
+                  </div>
+                </div>
+                <p style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 16px;">
+                  Residential property structure valuation and itemized contents schedule.
+                </p>
+                <button type="button" class="btn btn-outline btn-sm" data-download-doc="HomeSafe_Dwelling_POL-HM-1185" data-doc-type="Property Insurance Schedule">
+                  <i class="fa-solid fa-download"></i> Download Schedule
+                </button>
+              </div>
+
+              <!-- Doc 5 -->
+              <div class="doc-card">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                  <i class="fa-solid fa-passport text-primary" style="font-size: 1.75rem;"></i>
+                  <div>
+                    <h4 style="font-size: 1rem; font-weight: 800; color: var(--primary);">GlobalVoyage Travel Card</h4>
+                    <span style="font-size: 0.775rem; color: var(--text-muted);">Issued Jan 10, 2026 • 19 KB</span>
+                  </div>
+                </div>
+                <p style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 16px;">
+                  Emergency medical card with 24/7 international assistance and evacuation numbers.
+                </p>
+                <button type="button" class="btn btn-outline btn-sm" data-download-doc="GlobalVoyage_Health_Card_POL-TR-5021" data-doc-type="Travel Health Card">
+                  <i class="fa-solid fa-download"></i> Download Health Card
+                </button>
+              </div>
+
+              <!-- Doc 6 -->
+              <div class="doc-card">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                  <i class="fa-solid fa-receipt text-accent" style="font-size: 1.75rem;"></i>
+                  <div>
+                    <h4 style="font-size: 1rem; font-weight: 800; color: var(--primary);">Tax Exemption Summary</h4>
+                    <span style="font-size: 0.775rem; color: var(--text-muted);">FY 2025-2026 • 18 KB</span>
+                  </div>
+                </div>
+                <p style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 16px;">
+                  Certified annual premium payment statement for income tax filing deductions.
+                </p>
+                <button type="button" class="btn btn-outline btn-sm" data-download-doc="Annual_Tax_Exemption_Statement_2025_2026" data-doc-type="Annual Tax Certificate">
+                  <i class="fa-solid fa-download"></i> Download Tax Receipt
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Document Master Register Table -->
+          <div class="dashboard-card" style="margin-bottom: 24px;">
+            <div class="card-header-flex">
+              <h3 class="card-heading"><i class="fa-solid fa-table-list text-accent"></i> Policyholder Document Master Register</h3>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Showing <strong>6</strong> verified records</span>
+            </div>
+            <div class="table-responsive-box">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Document Reference</th>
+                    <th>Document Title</th>
+                    <th>Category</th>
+                    <th>Issued Date</th>
+                    <th>Format</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>DOC-HL-9482-SCH</strong></td>
+                    <td>HealthGuard Comprehensive Floater Schedule</td>
+                    <td>Health Insurance</td>
+                    <td>Nov 12, 2025</td>
+                    <td><span class="status-badge status-active">TXT Record</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm" data-download-doc="HealthGuard_Family_Schedule_POL-HL-9482" data-doc-type="Health Schedule">Download</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>DOC-LF-3319-BND</strong></td>
+                    <td>FamilySecure 20-Year Term Policy Bond</td>
+                    <td>Life Insurance</td>
+                    <td>Mar 01, 2023</td>
+                    <td><span class="status-badge status-active">TXT Record</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm" data-download-doc="FamilySecure_Term_Bond_POL-LF-3319" data-doc-type="Life Bond">Download</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>DOC-MT-7741-CRT</strong></td>
+                    <td>DriveProtect Motor Zero-Depreciation Certificate</td>
+                    <td>Motor Insurance</td>
+                    <td>Dec 05, 2025</td>
+                    <td><span class="status-badge status-active">TXT Record</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm" data-download-doc="DriveProtect_Auto_POL-MT-7741" data-doc-type="Motor Certificate">Download</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>DOC-HM-1185-END</strong></td>
+                    <td>HomeSafe Structure & Contents Endorsement</td>
+                    <td>Home Insurance</td>
+                    <td>Nov 01, 2025</td>
+                    <td><span class="status-badge status-active">TXT Record</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm" data-download-doc="HomeSafe_Dwelling_POL-HM-1185" data-doc-type="Property Schedule">Download</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>DOC-TR-5021-MED</strong></td>
+                    <td>GlobalVoyage Worldwide Medical Card</td>
+                    <td>Travel Insurance</td>
+                    <td>Jan 10, 2026</td>
+                    <td><span class="status-badge status-active">TXT Record</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm" data-download-doc="GlobalVoyage_Health_Card_POL-TR-5021" data-doc-type="Travel Card">Download</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>DOC-TAX-2026-STMT</strong></td>
+                    <td>Annual Tax Exemption Premium Certificate</td>
+                    <td>Tax Exemption</td>
+                    <td>Apr 05, 2026</td>
+                    <td><span class="status-badge status-active">TXT Record</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm" data-download-doc="Annual_Tax_Exemption_Statement_2025_2026" data-doc-type="Tax Summary">Download</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             Section 6: Profile & Settings
+             ========================================== -->
+        <section id="profile-settings" class="dashboard-section" hidden>
+          <!-- Profile Metrics Grid -->
+          <div class="dashboard-metrics-grid">
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Account Tier</div>
+                <div class="metric-value">Active Member</div>
+                <div class="metric-subtext">Verified Policyholder</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-circle-check"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Security Score</div>
+                <div class="metric-value">High (95%)</div>
+                <div class="metric-subtext">2FA Simulated Active</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Active Sessions</div>
+                <div class="metric-value">1 Session</div>
+                <div class="metric-subtext">Current Web Browser</div>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-laptop"></i></div>
+            </div>
+
+            <div class="metric-card">
+              <div>
+                <div class="metric-label">Profile Sync</div>
+                <div class="metric-value">Dynamic</div>
+                <div class="metric-subtext">Synchronized via login</div>
+              </div>
+              <div class="metric-icon-box accent-box"><i class="fa-solid fa-arrows-rotate"></i></div>
+            </div>
+          </div>
+
+          <div class="profile-layout-grid">
+            <!-- Profile Form -->
+            <div class="dashboard-card">
+              <h3 class="card-heading" style="margin-bottom: 18px;"><i class="fa-solid fa-user-pen text-accent"></i> Personal Information</h3>
+              <form id="profile-settings-form" novalidate>
+                <div class="form-row-2col">
+                  <div>
+                    <label class="form-label">First Name</label>
+                    <input type="text" id="profile-first-name" class="form-control" value="Alexander" required>
+                  </div>
+                  <div>
+                    <label class="form-label">Last Name</label>
+                    <input type="text" id="profile-last-name" class="form-control" value="Vance" required>
+                  </div>
+                </div>
+
+                <div style="margin-bottom: 16px;">
+                  <label class="form-label">Email Address</label>
+                  <input type="email" id="profile-email" class="form-control" value="alexander.vance@demo.test" required>
+                </div>
+
+                <div style="margin-bottom: 16px;">
+                  <label class="form-label">Phone Number</label>
+                  <input type="tel" class="form-control" value="+1 (555) 392-1084" required>
+                </div>
+
+                <div style="margin-bottom: 24px;">
+                  <label class="form-label">Primary Residence Address</label>
+                  <input type="text" class="form-control" value="482 Oakridge Heights Boulevard, New York, NY">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-sm">
+                  <i class="fa-solid fa-floppy-disk"></i> Save Profile (Session Demo)
+                </button>
+              </form>
+            </div>
+
+            <!-- Password Demo & Preferences -->
+            <div>
+              <div class="dashboard-card">
+                <h3 class="card-heading" style="margin-bottom: 18px;"><i class="fa-solid fa-key text-accent"></i> Password Change (Demo)</h3>
+                <form id="password-change-form" novalidate>
+                  <div style="margin-bottom: 14px;">
+                    <label class="form-label">Current Password</label>
+                    <input type="password" id="current-password" class="form-control" placeholder="••••••••" required>
+                  </div>
+                  <div style="margin-bottom: 14px;">
+                    <label class="form-label">New Password (Min 8 chars)</label>
+                    <input type="password" id="new-password" class="form-control" placeholder="••••••••" required>
+                  </div>
+                  <div style="margin-bottom: 18px;">
+                    <label class="form-label">Confirm New Password</label>
+                    <input type="password" id="confirm-new-password" class="form-control" placeholder="••••••••" required>
+                  </div>
+                  <button type="submit" class="btn btn-outline btn-sm">
+                    <i class="fa-solid fa-lock"></i> Update Password Demo
+                  </button>
+                </form>
+              </div>
+
+              <div class="dashboard-card">
+                <h3 class="card-heading" style="margin-bottom: 14px;"><i class="fa-solid fa-bell text-accent"></i> Notification Preferences</h3>
+                <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.885rem;">
+                  <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                    <input type="checkbox" checked>
+                    <span>Email alerts for renewals 30 days prior</span>
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                    <input type="checkbox" checked>
+                    <span>SMS alerts for active claim milestone updates</span>
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                    <input type="checkbox">
+                    <span>Quarterly educational insurance insights digest</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Account Security & Data Actions -->
+          <div class="dashboard-card">
+            <div class="card-header-flex">
+              <h3 class="card-heading"><i class="fa-solid fa-user-shield text-accent"></i> Account Management & Privacy Actions</h3>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Session Security</span>
+            </div>
+            <div class="quick-actions-bar">
+              <button type="button" class="btn btn-outline btn-sm">
+                <i class="fa-solid fa-file-export"></i> Export Profile Data
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" data-download-doc="Stackly_Digital_Policyholder_ID_Card" data-doc-type="Digital ID Card">
+                <i class="fa-solid fa-id-card"></i> Download Digital ID Card
+              </button>
+              <button type="button" class="btn btn-outline btn-sm logout-trigger">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> End Session & Logout
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Policy Details Modal -->
+  <div class="modal" id="policy-details-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="policy-modal-name">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span id="policy-modal-category" style="font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">Category</span>
+          <h3 class="modal-title" id="policy-modal-name">Policy Details</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);" id="policy-modal-number">POL-ID</span>
+        </div>
+        <button type="button" class="modal-close-btn" data-modal-close aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Policy Status</span>
+          <span id="policy-modal-status" class="status-badge status-active">Active</span>
+        </div>
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Coverage Sum Limit</span>
+          <span id="policy-modal-coverage">Coverage Limit</span>
+        </div>
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Monthly Premium</span>
+          <span id="policy-modal-premium">Premium</span>
+        </div>
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Policy Validity</span>
+          <span id="policy-modal-dates">Dates</span>
+        </div>
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Applicable Deductible</span>
+          <span id="policy-modal-deductible">Deductible</span>
+        </div>
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Covered Members / Asset</span>
+          <span id="policy-modal-members">Members</span>
+        </div>
+
+        <div style="margin-top: 18px;">
+          <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--primary); margin-bottom: 6px;">Exclusions Summary</h4>
+          <p id="policy-modal-exclusions" style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;"></p>
+        </div>
+
+        <div style="background-color: var(--accent-100); border-left: 4px solid var(--accent); padding: 12px 14px; margin-top: 16px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 0.8rem; color: var(--primary);">
+          <strong>Client-Side Demo Record:</strong> Data is simulated for demonstration and does not constitute a legally binding underwriting commitment.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline btn-sm" data-modal-close>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Claim Details Modal -->
+  <div class="modal" id="claim-details-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="claim-modal-id">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span id="claim-modal-category" style="font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">Category</span>
+          <h3 class="modal-title" id="claim-modal-id">Claim Details</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);" id="claim-modal-policy">Policy Ref</span>
+        </div>
+        <button type="button" class="modal-close-btn" data-modal-close aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Status</span>
+          <span id="claim-modal-status" class="status-badge status-under-review">Under Review</span>
+        </div>
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Claimed Indemnity</span>
+          <span id="claim-modal-amount" style="font-weight: 700; color: var(--primary);">$0.00</span>
+        </div>
+
+        <div style="margin-top: 14px;">
+          <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--primary); margin-bottom: 6px;">Incident Description</h4>
+          <p id="claim-modal-desc" style="font-size: 0.875rem; color: var(--text-body);"></p>
+        </div>
+
+        <div style="margin-top: 14px;">
+          <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--primary); margin-bottom: 6px;">Adjudication Notes</h4>
+          <p id="claim-modal-notes" style="font-size: 0.875rem; color: var(--text-muted);"></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline btn-sm" data-modal-close>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>

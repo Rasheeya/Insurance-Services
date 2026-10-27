@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stackly Insurance Services — Protect What Matters Most</title>
+  <meta name="description" content="Explore insurance products, understand coverage options, review claims procedures, and discover personal protection solutions.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/Stackly logo.webp">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- AOS Animation Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Page Specific CSS -->
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+
+  <!-- Common Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="Stackly Insurance Home">
+        <img src="assets/Stackly logo.webp" alt="Stackly Insurance Services Logo" width="48" height="48">
+        <div class="brand-text">
+          <span class="brand-title">Stackly</span>
+          <span class="brand-sub">Insurance Services</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="service.html" class="nav-link">Services</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <div class="mobile-only-auth" style="display: none; padding-top: 15px;">
+          <a href="login.html" class="btn btn-outline btn-sm" style="width: 100%;">Login</a>
+        </div>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+      </div>
+
+      <button type="button" class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- Section 1: Hero Section -->
+    <section class="hero-section" data-parallax-container>
+      <div class="hero-bg-shape hero-shape-1" data-parallax-depth="25"></div>
+      <div class="hero-bg-shape hero-shape-2" data-parallax-depth="-30"></div>
+
+      <div class="container hero-grid">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="900">
+          <div class="hero-badge">
+            <i class="fa-solid fa-certificate"></i>
+            <span>Trustworthy Financial Protection & Peace of Mind</span>
+          </div>
+
+          <h1 class="hero-title">
+            Protect What <br><span class="text-accent">Matters Most</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Discover insurance solutions designed to protect your health, family, vehicle, home, and financial future. Compare transparent coverage options with complete confidence.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="404.html" class="btn btn-accent btn-lg">
+              <span>Explore Insurance</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="404.html" class="btn btn-outline btn-lg">
+              <span>Get Started</span>
+              <i class="fa-solid fa-user-plus"></i>
+            </a>
+          </div>
+
+          <div class="hero-highlights">
+            <div class="highlight-item">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>Zero-Hassle Discovery</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fa-solid fa-file-contract"></i>
+              <span>Clear Policy Terms</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+              <span>24/7 Guided Assistance</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual-wrapper" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+          <div class="hero-img-box">
+            <img src="assets/images/hero-insurance.webp" alt="Family under protective insurance shield" width="800" height="600" loading="eager">
+          </div>
+
+          <!-- Floating Info Cards -->
+          <div class="floating-card card-top-right" data-parallax-depth="15">
+            <div class="floating-card-icon accent-bg">
+              <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+            <div>
+              <div class="floating-card-title">Family Health Guard</div>
+              <div class="floating-card-value">$1,000,000 Demo Cap</div>
+            </div>
+          </div>
+
+          <div class="floating-card card-bottom-left" data-parallax-depth="-20">
+            <div class="floating-card-icon">
+              <i class="fa-solid fa-award"></i>
+            </div>
+            <div>
+              <div class="floating-card-title">Claims Processing Rate</div>
+              <div class="floating-card-value">98.4% Benchmark</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Insurance Overview -->
+    <section class="section section-subtle">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag"><i class="fa-solid fa-chart-pie"></i> Platform Overview</span>
+          <h2 class="section-title">Insurance Solutions at a Glance <span class="demo-tag">Demo Benchmarks</span></h2>
+          <p class="section-desc">Sample metrics illustrating platform capability and policy tracking standards.</p>
+        </div>
+
+        <div class="overview-grid">
+          <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="stat-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <div class="stat-number" data-counter="48" data-counter-suffix="+">0</div>
+            <h3 class="stat-title">Insurance Plans</h3>
+            <p class="stat-desc">Illustrative coverage tiers spanning personal and commercial categories.</p>
+          </div>
+
+          <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="stat-icon"><i class="fa-solid fa-file-circle-check"></i></div>
+            <div class="stat-number" data-counter="14500" data-counter-prefix="" data-counter-suffix="+">0</div>
+            <h3 class="stat-title">Active Policies</h3>
+            <p class="stat-desc">Demonstration portfolio records maintained across user profiles.</p>
+          </div>
+
+          <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="stat-icon"><i class="fa-solid fa-hand-holding-hand"></i></div>
+            <div class="stat-number" data-counter="98.4" data-counter-decimals="1" data-counter-suffix="%">0</div>
+            <h3 class="stat-title">Claims Assistance</h3>
+            <p class="stat-desc">Simulated claim turnaround guidance rate across participating underwriters.</p>
+          </div>
+
+          <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="stat-icon"><i class="fa-solid fa-headset"></i></div>
+            <div class="stat-number" data-counter="24" data-counter-suffix="/7">0</div>
+            <h3 class="stat-title">Customer Support</h3>
+            <p class="stat-desc">Round-the-clock advisory resources and interactive policy assistance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Explore Insurance Categories -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag"><i class="fa-solid fa-shield"></i> Tailored Protection</span>
+          <h2 class="section-title">Explore Insurance Categories</h2>
+          <p class="section-desc">From personal well-being to business longevity, explore tailored protection categories designed for every stage of life.</p>
+        </div>
+
+        <div class="category-grid">
+          <!-- 1. Health Insurance -->
+          <div class="category-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="category-thumb">
+              <img src="assets/images/health-insurance.webp" alt="Health Insurance Protection" loading="lazy">
+              <div class="category-badge-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+            </div>
+            <div class="category-body">
+              <h3 class="category-title">Health Insurance</h3>
+              <p class="category-desc">Comprehensive medical expense coverage safeguarding hospitalization, emergency interventions, and preventative family checkups.</p>
+              <div class="category-benefit">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Cashless network hospitalization access</span>
+              </div>
+              <div class="category-footer">
+                <a href="404.html" class="explore-link">
+                  <span>Explore More</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Life Insurance -->
+          <div class="category-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="category-thumb">
+              <img src="assets/images/life-insurance.webp" alt="Life Insurance Coverage" loading="lazy">
+              <div class="category-badge-icon"><i class="fa-solid fa-umbrella"></i></div>
+            </div>
+            <div class="category-body">
+              <h3 class="category-title">Life Insurance</h3>
+              <p class="category-desc">Empower your family's future with dependable term and family income replacement plans providing enduring financial stability.</p>
+              <div class="category-benefit">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Guaranteed beneficiary lump-sum security</span>
+              </div>
+              <div class="category-footer">
+                <a href="404.html" class="explore-link">
+                  <span>Explore More</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Motor Insurance -->
+          <div class="category-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="category-thumb">
+              <img src="assets/images/motor-insurance.webp" alt="Motor Vehicle Insurance" loading="lazy">
+              <div class="category-badge-icon"><i class="fa-solid fa-car"></i></div>
+            </div>
+            <div class="category-body">
+              <h3 class="category-title">Motor Insurance</h3>
+              <p class="category-desc">Complete vehicular coverage shielding collision damage, third-party liabilities, zero-depreciation endorsements, and 24/7 roadside aid.</p>
+              <div class="category-benefit">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Comprehensive collision & breakdown rescue</span>
+              </div>
+              <div class="category-footer">
+                <a href="404.html" class="explore-link">
+                  <span>Explore More</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Home Insurance -->
+          <div class="category-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="category-thumb">
+              <img src="assets/images/home-insurance.webp" alt="Home and Property Insurance" loading="lazy">
+              <div class="category-badge-icon"><i class="fa-solid fa-house-chimney-window"></i></div>
+            </div>
+            <div class="category-body">
+              <h3 class="category-title">Home Insurance</h3>
+              <p class="category-desc">Protect your dwelling structure and household contents from unexpected fire, storms, pipe ruptures, and accidental break-ins.</p>
+              <div class="category-benefit">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Structure rebuilding & valuable contents shield</span>
+              </div>
+              <div class="category-footer">
+                <a href="404.html" class="explore-link">
+                  <span>Explore More</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Travel Insurance -->
+          <div class="category-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="category-thumb">
+              <img src="assets/images/travel-insurance.webp" alt="International Travel Insurance" loading="lazy">
+              <div class="category-badge-icon"><i class="fa-solid fa-plane-departure"></i></div>
+            </div>
+            <div class="category-body">
+              <h3 class="category-title">Travel Insurance</h3>
+              <p class="category-desc">Travel the world with peace of mind. Covers emergency medical evacuations, trip interruptions, delayed baggage, and flight cancellations.</p>
+              <div class="category-benefit">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Global emergency assistance & luggage support</span>
+              </div>
+              <div class="category-footer">
+                <a href="404.html" class="explore-link">
+                  <span>Explore More</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Business Insurance -->
+          <div class="category-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="category-thumb">
+              <img src="assets/images/business-insurance.webp" alt="Commercial Business Insurance" loading="lazy">
+              <div class="category-badge-icon"><i class="fa-solid fa-building-shield"></i></div>
+            </div>
+            <div class="category-body">
+              <h3 class="category-title">Business Insurance</h3>
+              <p class="category-desc">Custom commercial solutions providing public liability, commercial property protection, business interruption recovery, and indemnity coverage.</p>
+              <div class="category-benefit">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Public liability & income interruption security</span>
+              </div>
+              <div class="category-footer">
+                <a href="404.html" class="explore-link">
+                  <span>Explore More</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Why Choose Our Platform -->
+    <section class="section section-subtle">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag"><i class="fa-solid fa-star"></i> Core Advantages</span>
+          <h2 class="section-title">Why Choose Our Insurance Platform</h2>
+          <p class="section-desc">Designed to simplify insurance discovery without complex jargon, aggressive sales tactics, or ambiguous terms.</p>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="why-icon"><i class="fa-solid fa-compass"></i></div>
+            <h3 class="why-title">Easy Policy Discovery</h3>
+            <p class="why-desc">Filter, compare, and understand policies across diverse categories through intuitive, transparent digital comparisons.</p>
+          </div>
+
+          <div class="why-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="why-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+            <h3 class="why-title">Clear Coverage Information</h3>
+            <p class="why-desc">Clear breakdowns of deductibles, waiting periods, and exclusions before you commit to any policy schedule.</p>
+          </div>
+
+          <div class="why-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="why-icon"><i class="fa-solid fa-route"></i></div>
+            <h3 class="why-title">Guided Claims Assistance</h3>
+            <p class="why-desc">Clear documentation checklists, status stages, and structured claim workflows to eliminate uncertainty during emergencies.</p>
+          </div>
+
+          <div class="why-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="why-icon"><i class="fa-solid fa-folder-open"></i></div>
+            <h3 class="why-title">Convenient Policy Management</h3>
+            <p class="why-desc">Unified access to your policy certificates, renewal countdowns, and claims records directly from your personal dashboard.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: How It Works -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag"><i class="fa-solid fa-list-check"></i> Simple Workflow</span>
+          <h2 class="section-title">How Our Platform Works</h2>
+          <p class="section-desc">A structured 4-step pathway from assessing your needs to managing active coverage.</p>
+        </div>
+
+        <div class="timeline-steps">
+          <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="step-number">1</div>
+            <h3 class="step-title">Explore Your Needs</h3>
+            <p class="step-desc">Identify which protection categories fit your family lifestyle, asset base, travel plans, or commercial operations.</p>
+          </div>
+
+          <div class="step-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="step-number">2</div>
+            <h3 class="step-title">Compare Coverage Options</h3>
+            <p class="step-desc">Review sum-insured limits, policy exclusions, waiting windows, and illustrative sample premiums side by side.</p>
+          </div>
+
+          <div class="step-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="step-number">3</div>
+            <h3 class="step-title">Choose a Suitable Plan</h3>
+            <p class="step-desc">Select coverage terms aligned with your risk profile and review key clauses and eligibility guidelines.</p>
+          </div>
+
+          <div class="step-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="step-number">4</div>
+            <h3 class="step-title">Manage Your Policy</h3>
+            <p class="step-desc">Access renewal schedules, monitor claims, and store policy schedules safely inside your user dashboard.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Featured Insurance Plans -->
+    <section class="section section-subtle">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag"><i class="fa-solid fa-tags"></i> Featured Plans</span>
+          <h2 class="section-title">Popular Insurance Plans <span class="demo-tag">Sample Benchmarks</span></h2>
+          <p class="section-desc">Illustrative coverage schedules. Actual premiums, deductibles, and eligibility criteria are determined by authorized underwriters.</p>
+        </div>
+
+        <div class="plans-grid">
+          <!-- Plan 1 -->
+          <div class="plan-card" data-aos="fade-up" data-aos-delay="100">
+            <span class="plan-category">Health Insurance</span>
+            <h3 class="plan-name">HealthGuard Essential</h3>
+            <div class="plan-pricing-box">
+              <div class="plan-price-label">Sample Monthly Benchmark</div>
+              <div class="plan-price-val">$85 <span style="font-size: 0.85rem; font-weight: 500;">/ mo</span></div>
+            </div>
+            <div class="plan-coverage-highlight">
+              <i class="fa-solid fa-shield-heart text-accent"></i>
+              <span>Up to $250,000 Annual Sum Insured</span>
+            </div>
+            <ul class="plan-features-list">
+              <li><i class="fa-solid fa-check"></i> Hospitalization & outpatient coverage</li>
+              <li><i class="fa-solid fa-check"></i> Cashless access in 9,000+ facilities</li>
+              <li><i class="fa-solid fa-check"></i> Emergency ambulance allowance</li>
+              <li><i class="fa-solid fa-check"></i> Standard pre-existing waiting: 24 mos</li>
+            </ul>
+            <div class="plan-footer">
+              <button type="button" class="btn btn-outline" style="width: 100%;" data-plan-id="health-essential">View Details</button>
+              <p class="plan-disclaimer">Sample terms. Subject to insurer underwriting.</p>
+            </div>
+          </div>
+
+          <!-- Plan 2 -->
+          <div class="plan-card featured-plan" data-aos="fade-up" data-aos-delay="200">
+            <div class="plan-badge"><i class="fa-solid fa-crown" style="font-size: 0.7rem;"></i> Most Comprehensive</div>
+            <span class="plan-category">Health Insurance</span>
+            <h3 class="plan-name">HealthGuard Family Shield</h3>
+            <div class="plan-pricing-box">
+              <div class="plan-price-label">Sample Monthly Benchmark</div>
+              <div class="plan-price-val">$190 <span style="font-size: 0.85rem; font-weight: 500;">/ mo</span></div>
+            </div>
+            <div class="plan-coverage-highlight">
+              <i class="fa-solid fa-shield-heart text-accent"></i>
+              <span>$1,000,000 Aggregate Family Limit</span>
+            </div>
+            <ul class="plan-features-list">
+              <li><i class="fa-solid fa-check"></i> Comprehensive family floater coverage</li>
+              <li><i class="fa-solid fa-check"></i> Zero-deductible preferred network tier</li>
+              <li><i class="fa-solid fa-check"></i> Worldwide emergency medical evacuation</li>
+              <li><i class="fa-solid fa-check"></i> Maternity & preventive diagnostics</li>
+            </ul>
+            <div class="plan-footer">
+              <button type="button" class="btn btn-primary" style="width: 100%;" data-plan-id="health-premium">View Details</button>
+              <p class="plan-disclaimer">Sample terms. Subject to insurer underwriting.</p>
+            </div>
+          </div>
+
+          <!-- Plan 3 -->
+          <div class="plan-card" data-aos="fade-up" data-aos-delay="300">
+            <span class="plan-category">Motor Insurance</span>
+            <h3 class="plan-name">DriveProtect Auto Comprehensive</h3>
+            <div class="plan-pricing-box">
+              <div class="plan-price-label">Sample Monthly Benchmark</div>
+              <div class="plan-price-val">$65 <span style="font-size: 0.85rem; font-weight: 500;">/ mo</span></div>
+            </div>
+            <div class="plan-coverage-highlight">
+              <i class="fa-solid fa-car text-accent"></i>
+              <span>Market Value + $10M Third Party</span>
+            </div>
+            <ul class="plan-features-list">
+              <li><i class="fa-solid fa-check"></i> Zero depreciation on replacement parts</li>
+              <li><i class="fa-solid fa-check"></i> 24/7 roadside mechanical assistance</li>
+              <li><i class="fa-solid fa-check"></i> Replacement loan vehicle during repair</li>
+              <li><i class="fa-solid fa-check"></i> Windscreen repair without excess penalty</li>
+            </ul>
+            <div class="plan-footer">
+              <button type="button" class="btn btn-outline" style="width: 100%;" data-plan-id="motor-comprehensive">View Details</button>
+              <p class="plan-disclaimer">Sample terms. Subject to vehicle inspection.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Claims Assistance -->
+    <section class="section">
+      <div class="container">
+        <div class="claims-grid">
+          <div class="claims-info" data-aos="fade-right">
+            <span class="section-tag"><i class="fa-solid fa-handshake-angle"></i> Transparent Guidance</span>
+            <h2 class="section-title">Claims Assistance Made Predictable</h2>
+            <p class="section-desc">
+              When the unexpected happens, submitting an insurance claim should be straightforward. Our platform outlines the exact four-step protocol followed by leading insurers.
+            </p>
+
+            <div class="claims-steps-list">
+              <div class="claim-step-item">
+                <div class="claim-step-badge">1</div>
+                <div class="claim-step-text">
+                  <h4>Notify the Insurer Promptly</h4>
+                  <p>Register the incident through your portal or dedicated 24/7 emergency claims helpline.</p>
+                </div>
+              </div>
+
+              <div class="claim-step-item">
+                <div class="claim-step-badge">2</div>
+                <div class="claim-step-text">
+                  <h4>Submit Required Documents</h4>
+                  <p>Provide verified medical bills, repair estimates, or police incident reports through our checklist.</p>
+                </div>
+              </div>
+
+              <div class="claim-step-item">
+                <div class="claim-step-badge">3</div>
+                <div class="claim-step-text">
+                  <h4>Track Real-Time Progress</h4>
+                  <p>Monitor underwriting evaluation, surveyor assessment, and documentation queries in real time.</p>
+                </div>
+              </div>
+
+              <div class="claim-step-item">
+                <div class="claim-step-badge">4</div>
+                <div class="claim-step-text">
+                  <h4>Receive Insurer Decision & Settlement</h4>
+                  <p>Review the documented claim decision, approved indemnity breakdown, and cashless disbursements.</p>
+                </div>
+              </div>
+            </div>
+
+            <a href="404.html" class="btn btn-primary btn-lg">
+              <span>Track Demo Claim</span>
+              <i class="fa-solid fa-magnifying-glass-chart"></i>
+            </a>
+          </div>
+
+          <div class="claims-visual" data-aos="fade-left">
+            <div class="claim-demo-card">
+              <div class="claim-demo-header">
+                <div>
+                  <span class="claim-demo-title">Simulated Claim #CLM-2026-104</span>
+                  <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">HealthGuard Comprehensive Family</div>
+                </div>
+                <span class="claim-badge-status">Under Review</span>
+              </div>
+
+              <div class="claim-progress-track">
+                <div class="track-node completed">
+                  <div class="node-dot"><i class="fa-solid fa-check"></i></div>
+                  <div class="node-label">Submitted</div>
+                </div>
+                <div class="track-node current">
+                  <div class="node-dot"><i class="fa-solid fa-clock"></i></div>
+                  <div class="node-label">Under Review</div>
+                </div>
+                <div class="track-node">
+                  <div class="node-dot">3</div>
+                  <div class="node-label">Assessing</div>
+                </div>
+                <div class="track-node">
+                  <div class="node-dot">4</div>
+                  <div class="node-label">Decision</div>
+                </div>
+              </div>
+
+              <div class="claim-record-preview">
+                <p><strong>Incident:</strong> Emergency outpatient diagnostic evaluation and minor surgery.</p>
+                <p><strong>Claimed Amount:</strong> $1,450.00 (Demonstration simulation)</p>
+                <p style="margin-top: 8px; color: var(--text-muted); font-size: 0.775rem;">
+                  <em>Notice: Official claim approvals require integration with authorized underwriting carriers.</em>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: Customer Testimonials -->
+    <section class="section section-subtle">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag"><i class="fa-solid fa-comments"></i> Experiences</span>
+          <h2 class="section-title">What Our Users Say <span class="demo-tag">Illustrative Scenarios</span></h2>
+          <p class="section-desc">Sample user perspectives illustrating policy exploration and claim tracking clarity.</p>
+        </div>
+
+        <div class="testimonial-carousel" data-aos="zoom-in">
+          <div class="carousel-viewport">
+            <!-- Slide 1 -->
+            <div class="testimonial-slide active">
+              <div class="testimonial-card">
+                <div class="testimonial-stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="testimonial-quote">
+                  "Stackly made comparing health insurance terms remarkably simple. For the first time, I could clearly see the waiting periods and hospital network inclusions before making my family's enrollment decision."
+                </p>
+                <div class="testimonial-author">
+                  <img src="assets/images/avatar-1.webp" alt="Sarah Vance Portrait" class="testimonial-avatar">
+                  <div style="text-align: left;">
+                    <div class="author-name">Sarah Vance</div>
+                    <div class="author-role">Individual Policyholder • Family Health</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="testimonial-slide">
+              <div class="testimonial-card">
+                <div class="testimonial-stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="testimonial-quote">
+                  "Managing auto and home insurance policies from one clean dashboard has saved me hours. The claims tracking walkthrough removed all the anxiety when we needed roadside support."
+                </p>
+                <div class="testimonial-author">
+                  <img src="assets/images/avatar-2.webp" alt="David Sterling Portrait" class="testimonial-avatar">
+                  <div style="text-align: left;">
+                    <div class="author-name">David Sterling</div>
+                    <div class="author-role">Automotive & Property Client</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="testimonial-slide">
+              <div class="testimonial-card">
+                <div class="testimonial-stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="testimonial-quote">
+                  "As a growing startup, finding commercial liability without deceptive jargon was crucial. The transparent policy comparisons gave our executive team confidence."
+                </p>
+                <div class="testimonial-author">
+                  <img src="assets/images/avatar-3.webp" alt="Elena Rostova Portrait" class="testimonial-avatar">
+                  <div style="text-align: left;">
+                    <div class="author-name">Elena Rostova</div>
+                    <div class="author-role">Small Business Director</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-controls">
+            <button type="button" class="carousel-prev" aria-label="Previous Testimonial">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <div class="carousel-dots"></div>
+            <button type="button" class="carousel-next" aria-label="Next Testimonial">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 9: Latest Insurance Insights -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag"><i class="fa-solid fa-newspaper"></i> Educational Guides</span>
+          <h2 class="section-title">Latest Insurance Insights</h2>
+          <p class="section-desc">Practical guides to understanding coverage clauses, policy renewals, deductibles, and claim steps.</p>
+        </div>
+
+        <div class="insights-grid">
+          <!-- Article 1 -->
+          <div class="insight-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="insight-thumb">
+              <img src="assets/images/blog-health.webp" alt="Health Insurance Article" loading="lazy">
+            </div>
+            <div class="insight-body">
+              <div class="insight-meta">
+                <span><i class="fa-regular fa-calendar"></i> Oct 15, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 6 min read</span>
+              </div>
+              <h3 class="insight-title">Understanding Health Insurance Coverage & Waiting Periods</h3>
+              <p class="insight-excerpt">What you need to know about initial waiting windows, pre-existing conditions, and room-rent sub-limits.</p>
+              <div class="insight-footer">
+                <a href="404.html" class="explore-link">
+                  <span>Read Article</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 2 -->
+          <div class="insight-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="insight-thumb">
+              <img src="assets/images/blog-life.webp" alt="Life Insurance Article" loading="lazy">
+            </div>
+            <div class="insight-body">
+              <div class="insight-meta">
+                <span><i class="fa-regular fa-calendar"></i> Oct 10, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 5 min read</span>
+              </div>
+              <h3 class="insight-title">How Life Insurance Can Support Your Family’s Financial Future</h3>
+              <p class="insight-excerpt">A comprehensive breakdown of pure term protection versus whole life benefits, and calculating adequate coverage.</p>
+              <div class="insight-footer">
+                <a href="404.html" class="explore-link">
+                  <span>Read Article</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 3 -->
+          <div class="insight-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="insight-thumb">
+              <img src="assets/images/blog-motor.webp" alt="Motor Insurance Article" loading="lazy">
+            </div>
+            <div class="insight-body">
+              <div class="insight-meta">
+                <span><i class="fa-regular fa-calendar"></i> Sep 28, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 4 min read</span>
+              </div>
+              <h3 class="insight-title">Important Things to Know Before Buying Motor Insurance</h3>
+              <p class="insight-excerpt">Zero-depreciation riders, third-party legal minimums, and how to safeguard your cumulative No Claim Bonus.</p>
+              <div class="insight-footer">
+                <a href="404.html" class="explore-link">
+                  <span>Read Article</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 10: Newsletter Subscription -->
+    <section class="section section-subtle" style="padding: 40px 0;">
+      <div class="container">
+        <div class="newsletter-banner newsletter-form-box" data-aos="zoom-in">
+          <div>
+            <span class="section-tag" style="background-color: rgba(255, 255, 255, 0.15); color: var(--secondary);">
+              <i class="fa-solid fa-envelope-open-text" style="color: var(--accent);"></i> Free Educational Insights
+            </span>
+            <h2 class="newsletter-headline">Get Regular Policy & Coverage Alerts</h2>
+            <p class="newsletter-desc">
+              Subscribe to receive curated monthly insurance insights, deductible tips, and consumer advisory checklists directly to your inbox.
+            </p>
+          </div>
+
+          <form class="newsletter-banner-form newsletter-form newsletter-form-box" novalidate>
+            <div class="banner-input-row">
+              <input type="email" class="banner-input newsletter-input" placeholder="Enter your work email address..." required aria-label="Work email for newsletter subscription">
+              <button type="submit" class="btn btn-accent">Subscribe</button>
+            </div>
+            <span class="field-error-msg" role="alert" style="display: none; color: #EF4444; font-size: 0.85rem; font-weight: 700; margin-top: 6px;">Email is required</span>
+            <p style="font-size: 0.775rem; color: rgba(255, 255, 255, 0.7); margin-top: 4px;">
+              Educational demonstration mode: No persistent emails are saved or transmitted to a server.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 11: Final Call to Action -->
+    <section class="section" style="padding-bottom: 110px;">
+      <div class="container">
+        <div class="cta-banner-wrapper" data-aos="zoom-in">
+          <h2 class="cta-headline">Your Protection Starts With an Informed Choice</h2>
+          <p class="cta-subtext">
+            Explore insurance options and learn how different types of coverage can help manage life's uncertainties. Start your discovery with complete transparency today.
+          </p>
+          <div class="cta-actions">
+            <a href="404.html" class="btn btn-accent btn-lg">
+              <span>Explore Plans</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="404.html" class="btn btn-outline-white btn-lg">
+              <span>Create Account</span>
+              <i class="fa-solid fa-user-plus"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Common Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand & Info -->
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" style="margin-bottom: 16px;">
+            <img src="assets/Stackly logo.webp" alt="Stackly Insurance Services Logo" width="48" height="48">
+            <div class="brand-text">
+              <span class="brand-title">Stackly</span>
+              <span class="brand-sub">Insurance Services</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Stackly is a modern, transparent insurance services platform created to help individuals, families, and businesses discover, compare, and manage comprehensive protection solutions.
+          </p>
+          <div class="footer-socials">
+            <a href="404.html" class="social-btn" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="404.html" class="social-btn" aria-label="Twitter X Profile"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="404.html" class="social-btn" aria-label="Facebook Page"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="404.html" class="social-btn" aria-label="Instagram Profile"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <h4 class="footer-col-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Home</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> About</a></li>
+            <li><a href="service.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Service</a></li>
+            <li><a href="blog.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Blog</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Insurance Services -->
+        <div>
+          <h4 class="footer-col-title">Insurance Services</h4>
+          <ul class="footer-links">
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Health Insurance</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Life Insurance</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Motor Insurance</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Home Insurance</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Travel Insurance</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Business Insurance</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Head Office -->
+        <div>
+          <h4 class="footer-col-title">Head Office</h4>
+          <div class="footer-contact-details" style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">
+            <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px;">
+              <i class="fa-solid fa-location-dot text-accent" style="margin-top: 4px; font-size: 0.95rem;"></i>
+              <a href="404.html" style="color: inherit; text-decoration: none;">MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</a>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+              <i class="fa-solid fa-phone text-accent" style="font-size: 0.95rem;"></i>
+              <a href="404.html" style="color: #FFFFFF; font-weight: 700; text-decoration: none;">1800 789 456</a>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+              <i class="fa-solid fa-envelope text-accent" style="font-size: 0.95rem;"></i>
+              <a href="404.html" style="color: #FFFFFF; text-decoration: none;">info@stackly.com</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 5: Location Map -->
+        <div>
+          <h4 class="footer-col-title">Our Location</h4>
+          <div class="footer-map-box" style="margin: 0 0 10px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); height: 130px; background: #0a1533;">
+            <iframe
+              src="https://maps.google.com/maps?q=11.6829566,78.1739798+(Stackly)&t=&z=16&ie=UTF8&iwloc=B&output=embed"
+              width="100%"
+              height="100%"
+              style="border: 0; display: block;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Stackly Insurance Services Google Map Location">
+            </iframe>
+          </div>
+          <div>
+            <a href="404.html" style="color: var(--accent); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem;">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <span>Get Directions (Google Maps)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Stackly Insurance Services Platform. Client-Side Educational Demonstration.
+        </div>
+        <div class="footer-legal-links">
+          <span>Privacy Principles (Demo)</span>
+          <span>Terms of Exploration</span>
+          <span>Regulatory Notice</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Plan Details Modal -->
+  <div class="modal" id="plan-details-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="plan-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span id="plan-modal-category" class="section-tag" style="margin-bottom: 4px;">Insurance Category</span>
+          <h3 class="modal-title" id="plan-modal-title">Plan Name</h3>
+        </div>
+        <button type="button" class="modal-close-btn" data-modal-close aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Coverage Highlights</span>
+          <span class="modal-spec-val" id="plan-modal-coverage">Coverage Amount</span>
+        </div>
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Sample Premium</span>
+          <span class="modal-spec-val" id="plan-modal-premium">Sample Premium</span>
+        </div>
+        <div class="modal-spec-row">
+          <span class="modal-spec-label">Eligibility Criteria</span>
+          <span class="modal-spec-val" id="plan-modal-eligibility">Eligibility Terms</span>
+        </div>
+
+        <div style="margin-top: 20px;">
+          <h4 style="font-size: 1rem; font-weight: 800; color: var(--primary); margin-bottom: 10px;">Included Key Benefits</h4>
+          <ul id="plan-modal-features" class="plan-features-list"></ul>
+        </div>
+
+        <div style="margin-top: 16px;">
+          <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--primary); margin-bottom: 6px;">Exclusions & Waiting Period</h4>
+          <p id="plan-modal-exclusions" style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;"></p>
+        </div>
+
+        <div class="modal-callout">
+          <i class="fa-solid fa-circle-info" style="margin-right: 6px;"></i>
+          <span id="plan-modal-disclaimer">Disclaimer details</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="404.html" class="btn btn-primary btn-sm">Explore Enrollment</a>
+        <button type="button" class="btn btn-outline btn-sm" data-modal-close>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- External Animation & Script CDNs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <!-- Core JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>

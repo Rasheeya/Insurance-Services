@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Support & Inquiries — Stackly</title>
+  <meta name="description" content="Reach our demo insurance advisory team for questions regarding coverage benchmarks, policy discovery, and platform walkthroughs.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/Stackly logo.webp">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- AOS Animation Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Page Specific CSS -->
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+
+
+  <!-- Common Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="Stackly Insurance Home">
+        <img src="assets/Stackly logo.webp" alt="Stackly Insurance Services Logo" width="48" height="48">
+        <div class="brand-text">
+          <span class="brand-title">Stackly</span>
+          <span class="brand-sub">Insurance Services</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="service.html" class="nav-link">Services</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link active" aria-current="page">Contact</a>
+        <div class="mobile-only-auth" style="display: none; padding-top: 15px;">
+          <a href="login.html" class="btn btn-outline btn-sm" style="width: 100%;">Login</a>
+        </div>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+      </div>
+
+      <button type="button" class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- Section 1: Hero -->
+    <section class="contact-hero">
+      <div class="container">
+        <div class="contact-hero-content" data-aos="fade-up">
+          <span class="section-tag"><i class="fa-solid fa-headset"></i> Advisory Desk</span>
+          <h1 class="contact-hero-title">
+            We’re Here to Help You <br><span class="text-accent">Understand Your Coverage</span>
+          </h1>
+          <p class="contact-hero-subtitle">
+            Contact our demo support interface for questions about insurance categories, policy information, or using the platform. We look forward to assisting you.
+          </p>
+        </div>
+
+        <!-- Section 2: Contact Information Cards -->
+        <div class="contact-cards-grid">
+          <div class="contact-info-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="contact-info-icon"><i class="fa-solid fa-phone-volume"></i></div>
+            <h3 class="contact-card-title">Phone Support</h3>
+            <div class="contact-card-detail"><a href="404.html" style="color: inherit; text-decoration: none;">1800 789 456</a></div>
+            <div class="contact-card-note">Toll-free customer helpline</div>
+          </div>
+
+          <div class="contact-info-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="contact-info-icon"><i class="fa-solid fa-envelope"></i></div>
+            <h3 class="contact-card-title">Email Inquiries</h3>
+            <div class="contact-card-detail"><a href="404.html" style="color: inherit; text-decoration: none;">info@stackly.com</a></div>
+            <div class="contact-card-note">Official customer advisory desk</div>
+          </div>
+
+          <div class="contact-info-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="contact-info-icon"><i class="fa-solid fa-building"></i></div>
+            <h3 class="contact-card-title">Office Location</h3>
+            <div class="contact-card-detail" style="font-size: 0.95rem; line-height: 1.4;">MMR Complex, Chinna Thirupathi</div>
+            <div class="contact-card-note">near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</div>
+          </div>
+
+          <div class="contact-info-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="contact-info-icon"><i class="fa-solid fa-clock"></i></div>
+            <h3 class="contact-card-title">Operating Hours</h3>
+            <div class="contact-card-detail">Mon – Sat: 9:00 AM – 7:00 PM</div>
+            <div class="contact-card-note">24/7 Digital Platform Access</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Contact Form & Illustration -->
+    <section class="section">
+      <div class="container contact-main-grid">
+        <div class="contact-form-box" data-aos="fade-right">
+          <h2 class="contact-form-title">Send Us an Inquiry</h2>
+          <p class="contact-form-sub">
+            Complete the form below. Client-side validation ensures all fields are properly formatted.
+          </p>
+
+          <form id="contact-form" novalidate>
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="contact-name" class="form-label">Full Name *</label>
+                <input type="text" id="contact-name" class="form-control" placeholder="e.g. Alexander Vance" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email" class="form-label">Email Address *</label>
+                <input type="email" id="contact-email" class="form-control" placeholder="name@domain.com" required>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="contact-category" class="form-label">Insurance Category *</label>
+                <select id="contact-category" class="form-control" required>
+                  <option value="">Select a protection category...</option>
+                  <option value="Health Insurance">Health Insurance</option>
+                  <option value="Life Insurance">Life Insurance</option>
+                  <option value="Motor Insurance">Motor Insurance</option>
+                  <option value="Home Insurance">Home & Property Insurance</option>
+                  <option value="Travel Insurance">Travel Insurance</option>
+                  <option value="Business Insurance">Business Insurance</option>
+                  <option value="General Question">General Platform Inquiry</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-subject" class="form-label">Subject *</label>
+                <input type="text" id="contact-subject" class="form-control" placeholder="Inquiry topic..." required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message" class="form-label">Your Message *</label>
+              <textarea id="contact-message" class="form-control" rows="5" placeholder="Please describe your question or scenario in detail (minimum 15 characters)..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+              <span>Submit Demonstration Inquiry</span>
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+
+        <div class="contact-side-info" data-aos="fade-left">
+          <div class="contact-support-visual">
+            <img src="assets/images/contact-support.webp" alt="Stackly 24/7 client care and support illustration" width="800" height="600" loading="lazy">
+          </div>
+
+          <div class="support-guarantee-box">
+            <h4><i class="fa-solid fa-shield-halved text-accent"></i> Transparent Communication</h4>
+            <p>
+              We treat your inquiries with strict confidentiality. Because this is a client-side platform demonstration, your form inputs are validated directly in your browser without transmitting personal records to an external database.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Head Office Location & Google Map -->
+    <section class="section section-subtle" style="padding: 70px 0;">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag"><i class="fa-solid fa-map-location-dot"></i> Our Location</span>
+          <h2 class="section-title">Visit Our Salem Headquarters</h2>
+          <p class="section-desc">Locate our corporate premises or access interactive driving directions via Google Maps.</p>
+        </div>
+
+        <div class="map-card-container" data-aos="fade-up" data-aos-delay="100" style="background: var(--secondary); border: 1px solid var(--primary-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md);">
+          <div style="padding: 24px 30px; border-bottom: 1px solid var(--primary-border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+            <div>
+              <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-bottom: 6px;">
+                <i class="fa-solid fa-building text-accent"></i> Stackly Insurance Services — Salem Office
+              </h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.5;">
+                <i class="fa-solid fa-location-dot text-accent" style="margin-right: 6px;"></i>
+                MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008
+              </p>
+            </div>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <a href="404.html" class="btn btn-outline btn-sm">
+                <i class="fa-solid fa-phone"></i> 1800 789 456
+              </a>
+              <a href="404.html" class="btn btn-accent btn-sm">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open in Google Maps
+              </a>
+            </div>
+          </div>
+
+          <div class="map-frame-wrapper" style="position: relative; width: 100%; height: 420px; border: none; background: #eaedf4;">
+            <iframe 
+              src="https://maps.google.com/maps?q=11.6829566,78.1739798+(Stackly)&t=&z=17&ie=UTF8&iwloc=B&output=embed" 
+              width="100%" 
+              height="100%" 
+              style="border:0; display: block;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade" 
+              title="Stackly Insurance Services Office Location Map">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Insurance Support Categories -->
+    <section class="section section-subtle">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag"><i class="fa-solid fa-layer-group"></i> Specialized Support</span>
+          <h2 class="section-title">Support Channels by Category</h2>
+          <p class="section-desc">Our educational interface provides specialized guidance for every phase of policy administration.</p>
+        </div>
+
+        <div class="support-types-grid">
+          <div class="support-type-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="support-type-icon"><i class="fa-solid fa-file-invoice"></i></div>
+            <h3 class="support-type-title">Policy Information</h3>
+            <p class="support-type-desc">Guidance on policy schedules, sum-insured limits, and member endorsement clauses.</p>
+          </div>
+
+          <div class="support-type-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="support-type-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+            <h3 class="support-type-title">Coverage Questions</h3>
+            <p class="support-type-desc">Detailed explanations of pre-existing exclusions, deductibles, and waiting periods.</p>
+          </div>
+
+          <div class="support-type-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="support-type-icon"><i class="fa-solid fa-hand-holding-hand"></i></div>
+            <h3 class="support-type-title">Claims Guidance</h3>
+            <p class="support-type-desc">Step-by-step checklists, hospital cashless protocols, and required repair documentation.</p>
+          </div>
+
+          <div class="support-type-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="support-type-icon"><i class="fa-solid fa-calendar-check"></i></div>
+            <h3 class="support-type-title">Renewals</h3>
+            <p class="support-type-desc">Renewal countdown tracking, grace period calculations, and No Claim Bonus continuity.</p>
+          </div>
+
+          <div class="support-type-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="support-type-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+            <h3 class="support-type-title">Technical Support</h3>
+            <p class="support-type-desc">Help navigating the user and client dashboards, downloading schedules, or resetting views.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Frequently Asked Questions -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag"><i class="fa-solid fa-circle-question"></i> Answers on Demand</span>
+          <h2 class="section-title">Support FAQs</h2>
+          <p class="section-desc">Quick answers to common questions about platform features and policy management.</p>
+        </div>
+
+        <div class="accordion-group" data-single-open="true" data-aos="fade-up">
+          <div class="accordion-item is-open">
+            <button type="button" class="accordion-trigger" aria-expanded="true">
+              <span>Where can I find and download my policy certificates?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="accordion-panel" style="max-height: 200px;">
+              <div class="accordion-body">
+                Policy certificates and schedules can be accessed and downloaded in text format directly from the <strong>Documents</strong> tab inside both the User Dashboard and Client Dashboard.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>How are renewal dates and remaining days calculated?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-body">
+                Our dashboard calculates days remaining dynamically in client-side JavaScript by computing the difference between current calendar dates and the expiration date defined on each demo policy record.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>Can I test both individual user and commercial client accounts?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-body">
+                Yes! From the <strong>Login</strong> page, simply select the <em>User</em> or <em>Client</em> role toggle to navigate seamlessly into either the individual user or client dashboard interfaces.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>What should I do if I need to update my personal contact details?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-body">
+                Navigate to the <strong>Profile & Settings</strong> tab inside your dashboard, where you can modify demonstration contact preferences and notification toggles for your active session.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Insurance Learning Resources -->
+    <section class="section section-subtle">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag"><i class="fa-solid fa-book-bookmark"></i> Self-Service Learning</span>
+          <h2 class="section-title">Insurance Learning Resources</h2>
+          <p class="section-desc">Deepen your understanding with our curated educational modules and guides.</p>
+        </div>
+
+        <div class="resources-grid">
+          <div class="resource-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="resource-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <h3 class="resource-title">Services Breakdown</h3>
+            <p class="resource-desc">Explore detailed coverage comparisons across Health, Life, Motor, Property, Travel, and Business insurance.</p>
+            <a href="404.html" class="btn btn-outline btn-sm">Explore Services</a>
+          </div>
+
+          <div class="resource-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="resource-icon"><i class="fa-solid fa-newspaper"></i></div>
+            <h3 class="resource-title">Insurance Insights Blog</h3>
+            <p class="resource-desc">Read expert articles demystifying waiting periods, zero-depreciation endorsements, and liability riders.</p>
+            <a href="404.html" class="btn btn-outline btn-sm">Read Blog</a>
+          </div>
+
+          <div class="resource-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="resource-icon"><i class="fa-solid fa-gauge-high"></i></div>
+            <h3 class="resource-title">Demo Dashboards</h3>
+            <p class="resource-desc">Experience our interactive policy tracking, claims timeline simulation, and renewal status calculators.</p>
+            <a href="404.html" class="btn btn-primary btn-sm">Enter Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Newsletter -->
+    <section class="section" style="padding: 40px 0;">
+      <div class="container">
+        <div class="newsletter-banner newsletter-form-box" data-aos="zoom-in" style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: var(--radius-lg); padding: 50px 40px; color: var(--secondary); display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px;">
+          <div>
+            <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 10px; color: var(--secondary);">Subscribe to Policy Alerts</h3>
+            <p style="font-size: 1rem; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">
+              Receive educational updates on insurance regulations, risk mitigation strategies, and consumer protection tips.
+            </p>
+          </div>
+          <form class="newsletter-form newsletter-form-box" novalidate>
+            <div class="banner-input-row" style="display: flex; gap: 10px;">
+              <input type="email" class="newsletter-input banner-input" style="flex-grow: 1; padding: 14px 18px; border-radius: var(--radius-sm); border: 1px solid rgba(255, 255, 255, 0.2); background-color: rgba(255, 255, 255, 0.1); color: var(--secondary); font-size: 0.95rem;" placeholder="Your work email..." required aria-label="Email address for policy newsletter">
+              <button type="submit" class="btn btn-accent">Subscribe</button>
+            </div>
+            <span class="field-error-msg" role="alert" style="display: none; color: #EF4444; font-size: 0.85rem; font-weight: 700; margin-top: 6px;">Email is required</span>
+            <p style="font-size: 0.775rem; color: rgba(255, 255, 255, 0.65); margin-top: 6px;">Demonstration subscription only. No spam.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: Final CTA -->
+    <section class="section" style="padding-bottom: 90px;">
+      <div class="container">
+        <div class="cta-banner-wrapper" data-aos="zoom-in">
+          <h2 class="cta-headline">Need Help Exploring Your Insurance Options?</h2>
+          <p class="cta-subtext">
+            Discover how clear, transparent policy comparisons can help you find optimal financial protection.
+          </p>
+          <div style="display: flex; justify-content: center; gap: 18px; flex-wrap: wrap;">
+            <a href="404.html" class="btn btn-accent btn-lg">
+              <span>Explore Services</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="404.html" class="btn btn-outline-white btn-lg">
+              <span>Create Account</span>
+              <i class="fa-solid fa-user-plus"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Common Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" style="margin-bottom: 16px;">
+            <img src="assets/Stackly logo.webp" alt="Stackly Insurance Services Logo" width="48" height="48">
+            <div class="brand-text">
+              <span class="brand-title">Stackly</span>
+              <span class="brand-sub">Insurance Services</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Stackly is a modern, transparent insurance services platform created to help individuals, families, and businesses discover, compare, and manage comprehensive protection solutions.
+          </p>
+          <div class="footer-socials">
+            <a href="404.html" class="social-btn" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="404.html" class="social-btn" aria-label="Twitter X Profile"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="404.html" class="social-btn" aria-label="Facebook Page"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="404.html" class="social-btn" aria-label="Instagram Profile"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Home</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> About</a></li>
+            <li><a href="service.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Service</a></li>
+            <li><a href="blog.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Blog</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Insurance Services</h4>
+          <ul class="footer-links">
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Health Insurance</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Life Insurance</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Motor Insurance</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Home Insurance</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Travel Insurance</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Business Insurance</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Head Office -->
+        <div>
+          <h4 class="footer-col-title">Head Office</h4>
+          <div class="footer-contact-details" style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">
+            <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px;">
+              <i class="fa-solid fa-location-dot text-accent" style="margin-top: 4px; font-size: 0.95rem;"></i>
+              <a href="404.html" style="color: inherit; text-decoration: none;">MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</a>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+              <i class="fa-solid fa-phone text-accent" style="font-size: 0.95rem;"></i>
+              <a href="404.html" style="color: #FFFFFF; font-weight: 700; text-decoration: none;">1800 789 456</a>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+              <i class="fa-solid fa-envelope text-accent" style="font-size: 0.95rem;"></i>
+              <a href="404.html" style="color: #FFFFFF; text-decoration: none;">info@stackly.com</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 5: Location Map -->
+        <div>
+          <h4 class="footer-col-title">Our Location</h4>
+          <div class="footer-map-box" style="margin: 0 0 10px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); height: 130px; background: #0a1533;">
+            <iframe
+              src="https://maps.google.com/maps?q=11.6829566,78.1739798+(Stackly)&t=&z=16&ie=UTF8&iwloc=B&output=embed"
+              width="100%"
+              height="100%"
+              style="border: 0; display: block;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Stackly Insurance Services Google Map Location">
+            </iframe>
+          </div>
+          <div>
+            <a href="404.html" style="color: var(--accent); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem;">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <span>Get Directions (Google Maps)</span>
+            </a>
+          </div>
+        </div>
+              <i class="fa-solid fa-map-location-dot"></i>
+              <span>Get Directions (Google Maps)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Stackly Insurance Services Platform. Client-Side Educational Demonstration.
+        </div>
+        <div class="footer-legal-links">
+          <span>Privacy Principles (Demo)</span>
+          <span>Terms of Exploration</span>
+          <span>Regulatory Notice</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

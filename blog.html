@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insurance Insights & Knowledge — Stackly</title>
+  <meta name="description" content="Explore practical guides to coverage, premiums, policy terms, renewals, and claims. Demystifying insurance clauses and financial protection.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/Stackly logo.webp">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- AOS Animation Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Page Specific CSS -->
+  <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+
+
+  <!-- Common Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="Stackly Insurance Home">
+        <img src="assets/Stackly logo.webp" alt="Stackly Insurance Services Logo" width="48" height="48">
+        <div class="brand-text">
+          <span class="brand-title">Stackly</span>
+          <span class="brand-sub">Insurance Services</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="service.html" class="nav-link">Services</a>
+        <a href="blog.html" class="nav-link active" aria-current="page">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <div class="mobile-only-auth" style="display: none; padding-top: 15px;">
+          <a href="login.html" class="btn btn-outline btn-sm" style="width: 100%;">Login</a>
+        </div>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+      </div>
+
+      <button type="button" class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- Section 1: Hero -->
+    <section class="blog-hero">
+      <div class="container">
+        <div class="blog-hero-content" data-aos="fade-up">
+          <span class="section-tag"><i class="fa-solid fa-book-open"></i> Insurance Education</span>
+          <h1 class="blog-hero-title">
+            Understand Insurance. <br><span class="text-accent">Make Informed Decisions.</span>
+          </h1>
+          <p class="blog-hero-subtitle">
+            Explore practical guides to coverage, premiums, policy terms, renewals, and claims. Empower yourself with clear, jargon-free insurance knowledge.
+          </p>
+        </div>
+
+        <!-- Section 2: Featured Article -->
+        <div class="featured-post-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="featured-post-thumb">
+            <img src="assets/images/blog-featured.webp" alt="Mastering insurance policies and terms in 2026" width="800" height="600" loading="eager">
+          </div>
+          <div class="featured-post-body">
+            <span class="featured-badge"><i class="fa-solid fa-star"></i> Featured Guide</span>
+            <div class="featured-meta">
+              <span><i class="fa-regular fa-calendar"></i> October 20, 2026</span>
+              <span><i class="fa-regular fa-clock"></i> 8 min read</span>
+            </div>
+            <h2 class="featured-title">Navigating the 2026 Insurance Landscape: A Practical Policyholder Roadmap</h2>
+            <p class="featured-excerpt">
+              From evolving telemedicine allowances and digital cashless hospital claim workflows to zero-depreciation endorsements, discover the essential clauses that define modern insurance protection.
+            </p>
+            <div>
+              <button type="button" class="btn btn-primary btn-sm" data-article-id="art-1">
+                <span>Read Full Guide</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sections 3-7: Search, Category Filters, and Article Feed -->
+    <section class="section">
+      <div class="container">
+        
+        <!-- Section 7: Search and Category Filter Toolbar -->
+        <div class="blog-toolbar" data-aos="fade-up">
+          <div class="search-box-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="blog-search" class="search-input" placeholder="Search guides by title or keyword..." aria-label="Search insurance articles">
+          </div>
+
+          <div class="filter-pills-list">
+            <button type="button" class="blog-filter-btn active" data-filter="all">All Articles</button>
+            <button type="button" class="blog-filter-btn" data-filter="Health Insurance">Health</button>
+            <button type="button" class="blog-filter-btn" data-filter="Life Insurance">Life</button>
+            <button type="button" class="blog-filter-btn" data-filter="Motor Insurance">Motor</button>
+            <button type="button" class="blog-filter-btn" data-filter="Home Insurance">Home</button>
+            <button type="button" class="blog-filter-btn" data-filter="Travel Insurance">Travel</button>
+            <button type="button" class="blog-filter-btn" data-filter="Business Insurance">Business</button>
+          </div>
+
+          <div>
+            <select id="blog-sort" class="sort-select" aria-label="Sort articles">
+              <option value="newest">Sort: Newest First</option>
+              <option value="oldest">Sort: Oldest First</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Article Feed: Covers Health (Sec 3), Life (Sec 4), Motor/Home/Travel (Sec 5), Business (Sec 6) -->
+        <div class="blog-feed">
+
+          <!-- Section 3: Health Insurance Article -->
+          <article class="blog-card" data-category="Health Insurance" data-date="2026-10-15" data-aos="fade-up" data-aos-delay="100">
+            <div class="blog-card-thumb">
+              <img src="assets/images/blog-health.webp" alt="Health insurance coverage analysis" loading="lazy">
+              <span class="card-cat-pill">Health Insurance</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span><i class="fa-regular fa-calendar"></i> Oct 15, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 6 min read</span>
+              </div>
+              <h3 class="blog-card-title">Understanding Health Insurance Coverage & Waiting Periods</h3>
+              <p class="blog-card-excerpt">
+                Comprehensive guide to initial 30-day waiting windows, pre-existing condition exclusions, and ICU room-rent sub-limits.
+              </p>
+              <div class="blog-card-footer">
+                <button type="button" class="read-article-btn" data-article-id="art-1">
+                  <span>Read Article</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section 4: Life and Family Protection Article -->
+          <article class="blog-card" data-category="Life Insurance" data-date="2026-10-10" data-aos="fade-up" data-aos-delay="200">
+            <div class="blog-card-thumb">
+              <img src="assets/images/blog-life.webp" alt="Life insurance term protection" loading="lazy">
+              <span class="card-cat-pill">Life Insurance</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span><i class="fa-regular fa-calendar"></i> Oct 10, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 5 min read</span>
+              </div>
+              <h3 class="blog-card-title">How Life Insurance Can Support Your Family’s Financial Horizon</h3>
+              <p class="blog-card-excerpt">
+                Why pure term insurance provides optimal income replacement, and how to calculate coverage using the Human Life Value formula.
+              </p>
+              <div class="blog-card-footer">
+                <button type="button" class="read-article-btn" data-article-id="art-2">
+                  <span>Read Article</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section 5a: Motor Insurance Article -->
+          <article class="blog-card" data-category="Motor Insurance" data-date="2026-09-28" data-aos="fade-up" data-aos-delay="300">
+            <div class="blog-card-thumb">
+              <img src="assets/images/blog-motor.webp" alt="Motor vehicle insurance guidance" loading="lazy">
+              <span class="card-cat-pill">Motor Insurance</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span><i class="fa-regular fa-calendar"></i> Sep 28, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 4 min read</span>
+              </div>
+              <h3 class="blog-card-title">Important Things to Know Before Buying Motor Insurance</h3>
+              <p class="blog-card-excerpt">
+                Zero-depreciation endorsements, protecting your cumulative No Claim Bonus, and understanding third-party liabilities.
+              </p>
+              <div class="blog-card-footer">
+                <button type="button" class="read-article-btn" data-article-id="art-3">
+                  <span>Read Article</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section 5b: Home & Property Insurance Article -->
+          <article class="blog-card" data-category="Home Insurance" data-date="2026-09-18" data-aos="fade-up" data-aos-delay="100">
+            <div class="blog-card-thumb">
+              <img src="assets/images/blog-home.webp" alt="Home and property insurance guide" loading="lazy">
+              <span class="card-cat-pill">Home Insurance</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span><i class="fa-regular fa-calendar"></i> Sep 18, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 7 min read</span>
+              </div>
+              <h3 class="blog-card-title">Home & Property Protection: Safeguarding Against Everyday Perils</h3>
+              <p class="blog-card-excerpt">
+                Differentiating structure rebuilding values from contents coverage, and understanding specified storm peril exclusions.
+              </p>
+              <div class="blog-card-footer">
+                <button type="button" class="read-article-btn" data-article-id="art-4">
+                  <span>Read Article</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section 5c: Travel Insurance Article -->
+          <article class="blog-card" data-category="Travel Insurance" data-date="2026-09-05" data-aos="fade-up" data-aos-delay="200">
+            <div class="blog-card-thumb">
+              <img src="assets/images/travel-insurance.webp" alt="Travel insurance medical evacuation" loading="lazy">
+              <span class="card-cat-pill">Travel Insurance</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span><i class="fa-regular fa-calendar"></i> Sep 05, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 5 min read</span>
+              </div>
+              <h3 class="blog-card-title">Travel Insurance: Medical Emergencies & Trip Interruption</h3>
+              <p class="blog-card-excerpt">
+                Why international emergency evacuation coverage is non-negotiable, and how trip interruption reimbursement works.
+              </p>
+              <div class="blog-card-footer">
+                <button type="button" class="read-article-btn" data-article-id="art-5">
+                  <span>Read Article</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section 6: Business Insurance Insights Article -->
+          <article class="blog-card" data-category="Business Insurance" data-date="2026-08-22" data-aos="fade-up" data-aos-delay="300">
+            <div class="blog-card-thumb">
+              <img src="assets/images/business-insurance.webp" alt="Business insurance commercial risk" loading="lazy">
+              <span class="card-cat-pill">Business Insurance</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span><i class="fa-regular fa-calendar"></i> Aug 22, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 6 min read</span>
+              </div>
+              <h3 class="blog-card-title">Risk Management & Business Insurance Essentials for SMEs</h3>
+              <p class="blog-card-excerpt">
+                Shielding growing commercial enterprises against public slip-and-fall liabilities, property ruin, and operational downtime.
+              </p>
+              <div class="blog-card-footer">
+                <button type="button" class="read-article-btn" data-article-id="art-6">
+                  <span>Read Article</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- New Section 1: Insurance Jargon Buster & Glossary -->
+    <section class="section" id="insurance-glossary" style="padding-top: 20px;">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-tag"><i class="fa-solid fa-spell-check"></i> Jargon Buster</span>
+          <h2 class="section-title">Essential Insurance Terminology Decoded</h2>
+          <p class="section-desc">
+            Demystifying complex policy language. Here are six crucial insurance terms every consumer and policyholder should understand before signing or filing a claim.
+          </p>
+        </div>
+
+        <div class="glossary-grid">
+          <!-- Term 1 -->
+          <div class="glossary-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="glossary-header">
+              <div class="glossary-icon-badge"><i class="fa-solid fa-scale-balanced text-accent"></i></div>
+              <span class="glossary-tag">Cost Sharing</span>
+            </div>
+            <h3 class="glossary-title">Deductible vs. Co-Payment</h3>
+            <p class="glossary-def">
+              A <strong>Deductible</strong> is the upfront fixed sum you pay out-of-pocket before insurance benefits start. A <strong>Co-Payment</strong> is a fixed percentage (e.g., 10%–20%) of each eligible medical or repair invoice you share with the insurer.
+            </p>
+            <div class="glossary-tip">
+              <strong>Underwriter Tip:</strong> Higher deductibles lower monthly premiums, but require maintaining readily available liquid emergency cash reserves.
+            </div>
+          </div>
+
+          <!-- Term 2 -->
+          <div class="glossary-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="glossary-header">
+              <div class="glossary-icon-badge"><i class="fa-solid fa-chart-pie text-primary"></i></div>
+              <span class="glossary-tag">Carrier Solvency</span>
+            </div>
+            <h3 class="glossary-title">Incurred Claim Ratio (ICR)</h3>
+            <p class="glossary-def">
+              The proportion of total premium revenue paid out in settled claims. An ICR between <strong>70% and 90%</strong> reflects an insurer that is financially stable, solvent, and claim-friendly toward its policyholders.
+            </p>
+            <div class="glossary-tip">
+              <strong>Underwriter Tip:</strong> ICRs above 100% reflect carrier underwriting deficits; below 60% may suggest unusually strict claim rejection filters.
+            </div>
+          </div>
+
+          <!-- Term 3 -->
+          <div class="glossary-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="glossary-header">
+              <div class="glossary-icon-badge"><i class="fa-solid fa-car text-accent"></i></div>
+              <span class="glossary-tag">Motor Add-On</span>
+            </div>
+            <h3 class="glossary-title">Zero-Depreciation Endorsement</h3>
+            <p class="glossary-def">
+              Commonly termed bumper-to-bumper protection, this rider waives standard 30%–50% depreciation deductions on plastic, rubber, fiber, and metal vehicle components during accident repairs.
+            </p>
+            <div class="glossary-tip">
+              <strong>Underwriter Tip:</strong> Strongly recommended for all vehicles under 5 years old to guarantee 100% parts replacement reimbursement.
+            </div>
+          </div>
+
+          <!-- Term 4 -->
+          <div class="glossary-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="glossary-header">
+              <div class="glossary-icon-badge"><i class="fa-solid fa-clock-rotate-left text-primary"></i></div>
+              <span class="glossary-tag">Health Clause</span>
+            </div>
+            <h3 class="glossary-title">Waiting Periods (Health Plans)</h3>
+            <p class="glossary-def">
+              A policy inception moratorium. The <strong>initial 30 days</strong> cover only accidental emergencies. Specific illnesses carry 1–2 year waiting, while <strong>Pre-Existing Diseases (PED)</strong> typically require 2–3 years continuous coverage.
+            </p>
+            <div class="glossary-tip">
+              <strong>Underwriter Tip:</strong> Never let your health policy lapse; switching insurers via portability preserves your accrued waiting credits.
+            </div>
+          </div>
+
+          <!-- Term 5 -->
+          <div class="glossary-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="glossary-header">
+              <div class="glossary-icon-badge"><i class="fa-solid fa-hospital-user text-accent"></i></div>
+              <span class="glossary-tag">Claim Modality</span>
+            </div>
+            <h3 class="glossary-title">Cashless Network vs. Reimbursement</h3>
+            <p class="glossary-def">
+              <strong>Cashless</strong> claims are settled directly between your insurer and network empanelled hospitals or workshops. <strong>Reimbursement</strong> requires you to pay upfront at non-network facilities and submit original bills within 15 days.
+            </p>
+            <div class="glossary-tip">
+              <strong>Underwriter Tip:</strong> Check that your local regional hospitals are on your carrier's current Tier-1 cashless network register.
+            </div>
+          </div>
+
+          <!-- Term 6 -->
+          <div class="glossary-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="glossary-header">
+              <div class="glossary-icon-badge"><i class="fa-solid fa-users text-primary"></i></div>
+              <span class="glossary-tag">Life Calculation</span>
+            </div>
+            <h3 class="glossary-title">Human Life Value (HLV) & Cover</h3>
+            <p class="glossary-def">
+              The calculated economic present value of your future income committed to dependent family members throughout your working life, minus your personal consumption costs and outstanding liabilities.
+            </p>
+            <div class="glossary-tip">
+              <strong>Underwriter Tip:</strong> The gold standard recommendation is securing pure term life insurance with a sum insured equal to 10x–15x your annual gross income.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- New Section 2: Step-by-Step Claim Resolution Roadmap & Checklist -->
+    <section class="roadmap-section-wrapper section" id="claims-roadmap">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-tag"><i class="fa-solid fa-route"></i> Transparent Process</span>
+          <h2 class="section-title">The Claim Resolution Roadmap: Step-by-Step</h2>
+          <p class="section-desc">
+            How an insurance claim actually moves from initial notification to complete cashless disbursement, with tips to avoid common administrative delays.
+          </p>
+        </div>
+
+        <div class="roadmap-grid">
+          <!-- Step 1 -->
+          <div class="roadmap-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="roadmap-card-top">
+              <span class="roadmap-step-pill">Stage 01</span>
+              <div class="roadmap-icon-wrap"><i class="fa-solid fa-phone-volume"></i></div>
+            </div>
+            <h3 class="roadmap-title">First Notice of Loss (FNOL)</h3>
+            <p class="roadmap-desc">
+              Notify your insurer within 24 to 48 hours of an incident via the online portal or 24/7 hotline. Receive your official docket Claim ID immediately.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="roadmap-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="roadmap-card-top">
+              <span class="roadmap-step-pill">Stage 02</span>
+              <div class="roadmap-icon-wrap"><i class="fa-solid fa-file-invoice"></i></div>
+            </div>
+            <h3 class="roadmap-title">Digital Evidence Filing</h3>
+            <p class="roadmap-desc">
+              Transmit digital scans of medical diagnosis sheets, police FIRs for vehicular incidents, or incident photos. Empanelled TPAs verify initial eligibility.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="roadmap-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="roadmap-card-top">
+              <span class="roadmap-step-pill">Stage 03</span>
+              <div class="roadmap-icon-wrap"><i class="fa-solid fa-clipboard-check"></i></div>
+            </div>
+            <h3 class="roadmap-title">Survey & Loss Audit</h3>
+            <p class="roadmap-desc">
+              An independent licensed surveyor or hospital medical auditor evaluates property damage or treatment charts to calculate reimbursable item totals.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="roadmap-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="roadmap-card-top">
+              <span class="roadmap-step-pill">Stage 04</span>
+              <div class="roadmap-icon-wrap"><i class="fa-solid fa-circle-check"></i></div>
+            </div>
+            <h3 class="roadmap-title">Settlement & Release</h3>
+            <p class="roadmap-desc">
+              Approved funds disburse directly to the cashless network facility, or wire straight into your linked bank account with a detailed settlement breakdown.
+            </p>
+          </div>
+        </div>
+
+        <!-- Claim Readiness Checklist Box -->
+        <div class="roadmap-checklist-box" data-aos="fade-up">
+          <div class="checklist-info-left">
+            <h3><i class="fa-solid fa-clipboard-check text-accent"></i> Essential Claim Documentation Checklist</h3>
+            <p>Ensure these documents are ready before initiating a formal claim docket for faster turnaround:</p>
+            <div class="checklist-pills-row">
+              <span class="checklist-pill-item"><i class="fa-solid fa-check"></i> Policy Certificate & ID Card</span>
+              <span class="checklist-pill-item"><i class="fa-solid fa-check"></i> Hospital Discharge Summary</span>
+              <span class="checklist-pill-item"><i class="fa-solid fa-check"></i> Itemized Bills & Pharmacy Receipts</span>
+              <span class="checklist-pill-item"><i class="fa-solid fa-check"></i> Police FIR (Theft / Road Collisions)</span>
+              <span class="checklist-pill-item"><i class="fa-solid fa-check"></i> Bank Cheque for Direct EFT Settlement</span>
+            </div>
+          </div>
+          <div>
+            <button type="button" class="btn btn-primary btn-sm" data-download-doc="Stackly_Claims_Preparation_Checklist_2026" data-doc-type="Official Claims Checklist">
+              <i class="fa-solid fa-file-arrow-down"></i> Download Claim Prep Checklist (.txt)
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- New Section 3: Frequently Asked Insurance Questions & Advisory Hub -->
+    <section class="section" id="insurance-faq">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-tag"><i class="fa-solid fa-circle-question"></i> Policyholder FAQ</span>
+          <h2 class="section-title">Frequently Asked Insurance Questions</h2>
+          <p class="section-desc">
+            Straightforward, objective answers to the questions our underwriting and advisory team hear most often from consumers.
+          </p>
+        </div>
+
+        <div class="accordion-group" data-single-open="true" data-aos="fade-up">
+          <!-- FAQ 1 -->
+          <div class="accordion-item is-open">
+            <button type="button" class="accordion-trigger" aria-expanded="true">
+              <span>Can I maintain two separate health insurance policies and claim from both?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="accordion-panel" style="max-height: 250px;">
+              <div class="accordion-body">
+                Yes. Under insurance contribution principles, if a hospitalization bill exceeds the sum insured or sub-limits of your primary policy (e.g., an employer group cover), you can utilize your secondary individual or family policy to settle the remaining eligible balance. Request a certified settlement and bill breakup statement from your primary insurer to submit to the second.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="accordion-item">
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>What happens if I miss my renewal due date? Is there a grace period?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-body">
+                Most health, life, and term policies grant a statutory 30-day grace period. Paying your renewal premium during this window maintains policy continuity benefits, including accrued waiting period credits and No Claim Bonus (NCB). Note, however, that treatments or losses occurring during an unpaid lapse period are not covered.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="accordion-item">
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>How does a No Claim Bonus (NCB) work, and is it transferable to another insurer?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-body">
+                An NCB rewards accident-free driving with escalating renewal premium discounts—starting at 20% after year one and increasing up to 50% for five consecutive claim-free years. NCB belongs to the individual policyholder, not the car. When buying a new automobile or changing insurers, you can transfer your full accumulated NCB discount certificate.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="accordion-item">
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>What is the practical difference between Term Insurance and Endowment / ULIP Plans?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-body">
+                Term insurance offers pure protection: you obtain maximum death benefit cover (e.g., $1M+) for a modest annual premium, with zero payout if you survive the term. Endowment and ULIP plans bundle life cover with market investments, but carry significantly higher fees, lower investment returns, and much smaller protection multiples per dollar paid.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="accordion-item">
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>Does standard homeowners insurance cover flood, earthquake, and storm damage?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-body">
+                Standard fire policies cover structure fires, lightning, and domestic pipe ruptures. However, major Acts of God (AOG)—including seismic tremors, coastal storm surges, and riverine floods—often require specific natural peril riders or comprehensive structural endorsements depending on your property's regional flood and seismic hazard classification.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="accordion-item">
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>How can I dispute an unfairly rejected or underpaid insurance claim?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-body">
+                Start by filing an official written dispute with your insurer’s Internal Grievance Redressal Officer (GRO) citing your claim reference number. If unresolved or rejected after 30 days, you can lodge a formal complaint with the statutory Insurance Ombudsman. Ombudsman tribunals provide fast, free, and legally binding consumer resolution for claims up to statutory limits.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Advisory Card -->
+        <div class="faq-advisory-card" data-aos="fade-up">
+          <div class="faq-advisory-content">
+            <h4><i class="fa-solid fa-headset text-accent"></i> Have a Specific Insurance Policy Question?</h4>
+            <p>Our advisory specialists provide free, objective policy walkthroughs with zero commission bias.</p>
+          </div>
+          <div>
+            <a href="404.html" class="btn btn-primary btn-sm">
+              <i class="fa-solid fa-comments"></i> Ask an Advisor
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: Newsletter Subscription -->
+    <section class="section" style="padding-top: 20px; padding-bottom: 90px;">
+      <div class="container">
+        <div class="newsletter-banner newsletter-form-box" data-aos="zoom-in">
+          <div>
+            <span class="section-tag" style="background-color: rgba(255, 255, 255, 0.15); color: var(--secondary);">
+              <i class="fa-solid fa-envelope-open-text" style="color: var(--accent);"></i> Free Educational Insights
+            </span>
+            <h2 class="newsletter-headline">Stay Ahead on Policy Updates</h2>
+            <p class="newsletter-desc">
+              Subscribe to receive curated monthly insurance guides, deductible analysis checklists, and renewal tips directly to your inbox.
+            </p>
+          </div>
+
+          <form class="newsletter-banner-form newsletter-form newsletter-form-box" novalidate>
+            <div class="banner-input-row">
+              <input type="email" class="banner-input newsletter-input" placeholder="Enter your work email address..." required aria-label="Work email for newsletter subscription">
+              <button type="submit" class="btn btn-accent">Subscribe</button>
+            </div>
+            <span class="field-error-msg" role="alert" style="display: none; color: #EF4444; font-size: 0.85rem; font-weight: 700; margin-top: 6px;">Email is required</span>
+            <p style="font-size: 0.775rem; color: rgba(255, 255, 255, 0.7); margin-top: 4px;">
+              Demonstration mode: No persistent emails are saved or transmitted to a server.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Common Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" style="margin-bottom: 16px;">
+            <img src="assets/Stackly logo.webp" alt="Stackly Insurance Services Logo" width="48" height="48">
+            <div class="brand-text">
+              <span class="brand-title">Stackly</span>
+              <span class="brand-sub">Insurance Services</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Stackly is a modern, transparent insurance services platform created to help individuals, families, and businesses discover, compare, and manage comprehensive protection solutions.
+          </p>
+          <div class="footer-socials">
+            <a href="404.html" class="social-btn" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="404.html" class="social-btn" aria-label="Twitter X Profile"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="404.html" class="social-btn" aria-label="Facebook Page"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="404.html" class="social-btn" aria-label="Instagram Profile"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Home</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> About</a></li>
+            <li><a href="service.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Service</a></li>
+            <li><a href="blog.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Blog</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Insurance Services</h4>
+          <ul class="footer-links">
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Health Insurance</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Life Insurance</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Motor Insurance</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Home Insurance</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Travel Insurance</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; margin-right: 6px;"></i> Business Insurance</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Head Office -->
+        <div>
+          <h4 class="footer-col-title">Head Office</h4>
+          <div class="footer-contact-details" style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">
+            <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px;">
+              <i class="fa-solid fa-location-dot text-accent" style="margin-top: 4px; font-size: 0.95rem;"></i>
+              <a href="404.html" style="color: inherit; text-decoration: none;">MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</a>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+              <i class="fa-solid fa-phone text-accent" style="font-size: 0.95rem;"></i>
+              <a href="404.html" style="color: #FFFFFF; font-weight: 700; text-decoration: none;">1800 789 456</a>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+              <i class="fa-solid fa-envelope text-accent" style="font-size: 0.95rem;"></i>
+              <a href="404.html" style="color: #FFFFFF; text-decoration: none;">info@stackly.com</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 5: Location Map -->
+        <div>
+          <h4 class="footer-col-title">Our Location</h4>
+          <div class="footer-map-box" style="margin: 0 0 10px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); height: 130px; background: #0a1533;">
+            <iframe
+              src="https://maps.google.com/maps?q=11.6829566,78.1739798+(Stackly)&t=&z=16&ie=UTF8&iwloc=B&output=embed"
+              width="100%"
+              height="100%"
+              style="border: 0; display: block;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Stackly Insurance Services Google Map Location">
+            </iframe>
+          </div>
+          <div>
+            <a href="404.html" style="color: var(--accent); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem;">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <span>Get Directions (Google Maps)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Stackly Insurance Services Platform. Client-Side Educational Demonstration.
+        </div>
+        <div class="footer-legal-links">
+          <span>Privacy Principles (Demo)</span>
+          <span>Terms of Exploration</span>
+          <span>Regulatory Notice</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Article Preview Modal -->
+  <div class="modal" id="article-details-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="article-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span id="article-modal-category" class="section-tag" style="margin-bottom: 4px;">Category</span>
+          <h3 class="modal-title" id="article-modal-title">Article Title</h3>
+          <div id="article-modal-meta" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;"></div>
+        </div>
+        <button type="button" class="modal-close-btn" data-modal-close aria-label="Close article modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="article-modal-content">
+        <!-- Injected via js/script.js -->
+      </div>
+      <div class="modal-footer">
+        <a href="404.html" class="btn btn-primary btn-sm">Explore Associated Plans</a>
+        <button type="button" class="btn btn-outline btn-sm" data-modal-close>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

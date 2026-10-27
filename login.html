@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Stackly Insurance Services</title>
+  <meta name="description" content="Sign in to your Stackly Insurance Services portal to review policies, track claims, and manage coverage records.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/Stackly logo.webp">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Page Specific CSS -->
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+  <!-- Ambient Background Blobs -->
+  <div class="auth-bg-blob blob-1"></div>
+  <div class="auth-bg-blob blob-2"></div>
+
+  <div class="auth-card-wrapper">
+    <!-- Top Return Link -->
+    <div class="auth-nav-top">
+      <a href="index.html" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Back to Home</span>
+      </a>
+      <span style="font-size: 0.8rem; font-weight: 700; color: var(--primary); background: var(--secondary); padding: 6px 14px; border-radius: var(--radius-full); border: 1px solid var(--primary-border);">
+        <i class="fa-solid fa-shield-halved text-accent"></i> Demo Portal
+      </span>
+    </div>
+
+    <!-- Login Card -->
+    <div class="auth-card">
+      <div class="auth-header">
+        <a href="index.html" class="brand-badge">
+          <img src="assets/Stackly logo.webp" alt="Stackly Logo" width="44" height="44">
+          <span>Stackly</span>
+        </a>
+        <h1 class="auth-title">Welcome Back</h1>
+        <p class="auth-subtitle">Select your account role to access your insurance dashboard.</p>
+      </div>
+
+      <form id="login-form" novalidate>
+        <!-- Role Selection -->
+        <div class="role-selection-group">
+          <label class="role-label">Choose Dashboard Role *</label>
+          <div class="role-pill-container" role="radiogroup" aria-label="Select Account Role">
+            <label class="role-pill active">
+              <input type="radio" name="userRole" id="role-user" value="user" checked>
+              <i class="fa-solid fa-user"></i>
+              <span>User Dashboard</span>
+            </label>
+            <label class="role-pill">
+              <input type="radio" name="userRole" id="role-client" value="client">
+              <i class="fa-solid fa-briefcase"></i>
+              <span>Client Dashboard</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-group">
+          <label for="login-email" class="form-label">Email Address *</label>
+          <div class="input-with-icon">
+            <i class="fa-regular fa-envelope field-icon"></i>
+            <input type="email" id="login-email" class="form-control" placeholder="name@domain.com" required autocomplete="email">
+          </div>
+        </div>
+
+        <!-- Password Field with Show/Hide -->
+        <div class="form-group">
+          <label for="login-password" class="form-label">Password *</label>
+          <div class="input-with-icon">
+            <i class="fa-solid fa-lock field-icon"></i>
+            <input type="password" id="login-password" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+            <button type="button" class="password-toggle-btn" data-target-input="login-password" aria-label="Show password">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Utilities: Remember Me & Forgot Password -->
+        <div class="form-row-utility">
+          <label class="checkbox-label">
+            <input type="checkbox" id="login-remember" checked>
+            <span>Remember me</span>
+          </label>
+          <a href="#" class="forgot-password-link" id="forgot-password-link">Forgot password?</a>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit">
+          <span>Sign In to Dashboard</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <!-- Prompt to Signup -->
+        <div class="auth-footer-prompt">
+          Don't have an account yet? <a href="signup.html">Create an Account</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Informational Modal for Forgot Password -->
+  <div class="modal" id="forgot-password-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="forgot-modal-title">
+    <div class="modal-dialog">
+      <i class="fa-solid fa-key info-icon"></i>
+      <h3 id="forgot-modal-title">Password Reset Information</h3>
+      <p>
+        In this client-side demonstration, user accounts are simulated and do not persist encrypted passwords in an external database. Real password recovery requires integration with an authorized identity provider or insurer backend.
+      </p>
+      <button type="button" class="btn btn-primary btn-sm" data-modal-close style="width: 100%;">
+        Understood, Return to Login
+      </button>
+    </div>
+  </div>
+
+  <!-- Core JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>
