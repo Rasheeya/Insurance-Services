@@ -361,22 +361,26 @@
     </section>
 
     <!-- Section 7: Newsletter -->
-    <section class="section" style="padding: 40px 0;">
+    <section class="section section-subtle" style="padding: 40px 0;">
       <div class="container">
-        <div class="newsletter-banner newsletter-form-box" data-aos="zoom-in" style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: var(--radius-lg); padding: 50px 40px; color: var(--secondary); display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px;">
+        <div class="newsletter-banner newsletter-form-box" data-aos="zoom-in">
           <div>
-            <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 10px; color: var(--secondary);">Subscribe to Policy Alerts</h3>
-            <p style="font-size: 1rem; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">
+            <span class="section-tag" style="background-color: rgba(255, 255, 255, 0.15); color: var(--secondary);">
+              <i class="fa-solid fa-envelope-open-text" style="color: var(--accent);"></i> Policy Alert Digest
+            </span>
+            <h2 class="newsletter-headline">Subscribe to Policy Alerts</h2>
+            <p class="newsletter-desc">
               Receive educational updates on insurance regulations, risk mitigation strategies, and consumer protection tips.
             </p>
           </div>
-          <form class="newsletter-form newsletter-form-box" novalidate>
-            <div class="banner-input-row" style="display: flex; gap: 10px;">
-              <input type="email" class="newsletter-input banner-input" style="flex-grow: 1; padding: 14px 18px; border-radius: var(--radius-sm); border: 1px solid rgba(255, 255, 255, 0.2); background-color: rgba(255, 255, 255, 0.1); color: var(--secondary); font-size: 0.95rem;" placeholder="Your work email..." required aria-label="Email address for policy newsletter">
+
+          <form class="newsletter-banner-form newsletter-form newsletter-form-box" novalidate>
+            <div class="banner-input-row">
+              <input type="email" class="banner-input newsletter-input" placeholder="Enter your work email address..." required aria-label="Email address for policy newsletter">
               <button type="submit" class="btn btn-accent">Subscribe</button>
             </div>
             <span class="field-error-msg" role="alert" style="display: none; color: #EF4444; font-size: 0.85rem; font-weight: 700; margin-top: 6px;">Email is required</span>
-            <p style="font-size: 0.775rem; color: rgba(255, 255, 255, 0.65); margin-top: 6px;">Demonstration subscription only. No spam.</p>
+            <p class="newsletter-note" style="color: rgba(255, 255, 255, 0.65); font-size: 0.8rem; margin-top: 6px;">Demonstration subscription only. No spam.</p>
           </form>
         </div>
       </div>

@@ -1080,6 +1080,13 @@ ul {
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .newsletter-banner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 36px 24px;
+    gap: 24px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1292,9 +1299,34 @@ ul {
   .footer-col {
     text-align: left;
   }
+
+  .banner-input-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .banner-input-row .btn {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  .newsletter-banner {
+    padding: 28px 18px;
+  }
+
+  .newsletter-headline {
+    font-size: 1.55rem;
+  }
 }
 
 @media (max-width: 375px) {
+  .newsletter-banner {
+    padding: 24px 14px;
+  }
+
+  .newsletter-headline {
+    font-size: 1.35rem;
+  }
   body {
     padding-top: 64px;
   }
